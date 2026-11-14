@@ -3,6 +3,8 @@
    ────────────────────────────────────────────── */
 
 export type ProductCategory =
+  | "Sports Nutrition"
+  | "Fitness Essentials"
   | "Native Whey Isolates"
   | "Cellular ATP & Creatine"
   | "Mineral Hydration & Electrolytes"

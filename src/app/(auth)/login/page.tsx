@@ -138,7 +138,7 @@ export default function CustomerLoginPage() {
           setCustomerAuth({
             id: `cust_${cleanDigits}`,
             phone: formattedE164,
-            name: "Vikram Malhotra",
+            name: "Member",
             role: "customer",
           });
           router.push("/account");
@@ -217,10 +217,11 @@ export default function CustomerLoginPage() {
       <div className="hidden lg:flex lg:col-span-5 relative bg-primary text-on-primary p-12 flex-col justify-between overflow-hidden">
         {/* Background Image with Contrast Overlay */}
         <div className="absolute inset-0 z-0">
+          {/* TODO: Replace with the gym's real photos. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW2E60xNsYnBDI--0meMX_wzL2y4AAHMl6ceREcWH4rgXWk-3r4dHWv1x_YB0iasXKPYmLSMRPQIapTsO9nrHQAiF9nd4bUmJJmryt3w7D3XpI-QhGN2rNe1eiYMJZ93ivbqXtVJxxVnt2KFihUFBsvdCaked58UpOQT2Q06EDpgjzBO1bvIveQY3bvHc9N_S92u6-5CY-A74FpzHMesQPVKvsCDm1ed16csefQchR"
-            alt="Yodha Fitness Zone"
+            src="/images/placeholder-gym.jpg"
+            alt="Gym training area"
             className="w-full h-full object-cover grayscale opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80" />
@@ -234,7 +235,7 @@ export default function CustomerLoginPage() {
           >
             <span>YODHA</span>
             <span className="text-secondary-fixed text-xs font-semibold px-1.5 py-0.5 bg-white/10 border border-white/20">
-              ATHLETIC
+              FITNESS ZONE
             </span>
           </Link>
 
@@ -250,20 +251,20 @@ export default function CustomerLoginPage() {
         {/* Editorial Quote */}
         <div className="relative z-10 space-y-4 max-w-sm">
           <span className="font-label-sm text-label-sm uppercase tracking-[0.2em] text-secondary-fixed font-bold">
-            ATHLETE VERIFICATION PROTOCOL
+            SECURE ACCESS
           </span>
           <h2 className="font-headline-lg text-headline-lg uppercase font-semibold leading-tight tracking-tight">
-            PASSWORDLESS ACCESS. IMMEDIATE DISPATCH.
+            MEMBER ACCOUNT
           </h2>
           <p className="font-body-sm text-body-sm text-surface-container-high leading-relaxed">
-            Secure mobile phone authentication backed by Supabase SSR. Access consignment milestones, temperature-controlled routes, and batch certificates.
+            Sign in to see your orders, track deliveries, and manage your membership.
           </p>
         </div>
 
         {/* Footer Notice */}
         <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-outline uppercase tracking-wider">
           <span>OTP ENCRYPTION • 256-BIT SSL</span>
-          <span>FSSAI VERIFIED</span>
+          <span>CHARILAM, TRIPURA</span>
         </div>
       </div>
 
@@ -291,7 +292,7 @@ export default function CustomerLoginPage() {
               Customer Mobile Authentication
             </div>
             <h1 className="font-headline-lg text-headline-lg uppercase tracking-tight text-primary font-semibold">
-              {step === "phone" ? "Athlete Sign In" : "Verify Mobile Number"}
+              {step === "phone" ? "Sign In" : "Verify Mobile Number"}
             </h1>
             <p className="font-body-md text-body-md text-on-surface-variant">
               {step === "phone"
@@ -468,7 +469,7 @@ export default function CustomerLoginPage() {
                 href="/register"
                 className="font-semibold text-primary underline decoration-secondary underline-offset-4"
               >
-                Register Athlete Profile
+                Create Account
               </Link>
             </p>
           </div>

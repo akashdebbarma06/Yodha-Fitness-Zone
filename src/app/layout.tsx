@@ -3,9 +3,9 @@ import "./globals.css";
 import { CartProvider } from "@/components/providers/CartProvider";
 
 export const metadata: Metadata = {
-  title: "Yodha Fitness Zone — Premium Supplement Storefront",
+  title: "Yodha Fitness Zone — Gym & Supplements Store",
   description:
-    "Ultra-premium, minimalist DTC supplement and physical performance sanctuary brand. Cold-filtered native whey isolates, Creapure® creatine, bio-chelated electrolytes — lab-tested and certified.",
+    "Yodha Fitness Zone — unisex gym in Charilam, Tripura. Weight training, cardio, transformation programs, diet guidance and personal training, plus sports supplements delivered across India.",
 };
 
 export default function RootLayout({

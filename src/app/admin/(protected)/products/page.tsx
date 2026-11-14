@@ -46,10 +46,10 @@ export default function AdminProductsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-6">
         <div>
           <h1 className="font-headline-md text-headline-md font-semibold uppercase tracking-tight text-primary">
-            Formulations &amp; Catalog Management
+            Products
           </h1>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-            Maintain clinical specification matrix, batch certifications, active storefront visibility, and variant pricing.
+            Manage products, pricing, stock and storefront visibility.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ export default function AdminProductsPage() {
           className="h-10 px-5 bg-primary hover:bg-neutral-800 text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center gap-2 transition-colors shadow-sm self-start sm:self-auto"
         >
           <span className="material-symbols-outlined text-[18px]">add</span>
-          <span>Add New Formulation</span>
+          <span>Add New Product</span>
         </Link>
       </div>
 
@@ -69,7 +69,7 @@ export default function AdminProductsPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search formulation name, SKU..."
+            placeholder="Search product name, SKU..."
             className="w-full h-10 pl-9 pr-3 bg-surface border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary"
           />
           <span className="material-symbols-outlined text-[18px] absolute left-2.5 top-1/2 -translate-y-1/2 text-outline">
@@ -83,16 +83,13 @@ export default function AdminProductsPage() {
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="h-10 px-3 bg-surface border border-outline-variant text-xs uppercase font-semibold text-on-surface focus:outline-none focus:border-primary w-full sm:w-auto"
           >
-            <option value="all">All Disciplines (Categories)</option>
-            <option value="Native Whey Isolates">Native Whey Isolates</option>
-            <option value="Cellular ATP & Creatine">Cellular ATP &amp; Creatine</option>
-            <option value="Mineral Hydration & Electrolytes">Mineral Hydration &amp; Electrolytes</option>
-            <option value="Recovery & Adaptogens">Recovery &amp; Adaptogens</option>
-            <option value="Performance Hardware">Performance Hardware</option>
+            <option value="all">All Categories</option>
+            <option value="Sports Nutrition">Sports Nutrition</option>
+            <option value="Fitness Essentials">Fitness Essentials</option>
           </select>
 
           <span className="text-xs font-mono text-outline whitespace-nowrap">
-            {filtered.length} Formulations
+            {filtered.length} Products
           </span>
         </div>
       </div>
@@ -102,12 +99,12 @@ export default function AdminProductsPage() {
         <table className="w-full text-left font-body-sm text-body-sm">
           <thead className="bg-surface-container-low font-label-sm text-label-sm uppercase tracking-wider text-outline border-b border-outline-variant">
             <tr>
-              <th className="p-4">Formulation</th>
+              <th className="p-4">Product</th>
               <th className="p-4">Category</th>
               <th className="p-4">Variants</th>
               <th className="p-4">Base Price</th>
               <th className="p-4">Stock Yield</th>
-              <th className="p-4">COA Status</th>
+              <th className="p-4">Verification</th>
               <th className="p-4">Storefront Status</th>
               <th className="p-4 text-right">Actions</th>
             </tr>
@@ -170,7 +167,7 @@ export default function AdminProductsPage() {
                   <td className="p-4">
                     <span className="inline-flex items-center gap-1 text-xs font-semibold text-secondary">
                       <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                      COA Verified
+                      Verified
                     </span>
                   </td>
 

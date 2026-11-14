@@ -13,7 +13,7 @@ export default function AdminReportsPage() {
             Sales Reports &amp; Financial Ledger
           </h1>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-            Gross-to-net financial performance waterfall, formulation category yields, and athlete retention metrics.
+            Sales and revenue breakdown by category.
           </p>
         </div>
 
@@ -34,10 +34,10 @@ export default function AdminReportsPage() {
         <div className="flex items-center justify-between border-b border-outline-variant/60 pb-3">
           <div>
             <h2 className="font-title-md text-title-md uppercase font-bold text-primary">
-              Gross-To-Net Realized Waterfall (October Ledger)
+              Revenue Breakdown
             </h2>
             <p className="text-xs text-on-surface-variant">
-              Audited against Razorpay settlement batch transfers
+              Payment breakdown
             </p>
           </div>
           <span className="px-2.5 py-1 bg-secondary/15 text-secondary text-xs uppercase font-bold font-mono">
@@ -63,7 +63,7 @@ export default function AdminReportsPage() {
             <span className="font-metric-num text-2xl font-bold text-error block mt-1">
               -{formatINR(REPORT_DATA.discounts)}
             </span>
-            <span className="text-[11px] text-error">Promo code YODHA15</span>
+            <span className="text-[11px] text-error">Discounts</span>
           </div>
 
           <div className="p-4 bg-surface-container-low border border-outline-variant">
@@ -98,12 +98,12 @@ export default function AdminReportsPage() {
         </div>
       </div>
 
-      {/* ── Category Contribution & Top Formulation Leaderboard ── */}
+      {/* ── Category Contribution & Top Product Leaderboard ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left: Category Contribution (6 cols) */}
         <div className="lg:col-span-6 bg-surface-container-lowest p-6 border border-outline-variant space-y-4">
           <h3 className="font-title-md text-title-md uppercase font-bold text-primary border-b border-outline-variant/60 pb-2">
-            Discipline &amp; Category Yield
+            Category Breakdown
           </h3>
 
           <div className="space-y-4">
@@ -134,7 +134,7 @@ export default function AdminReportsPage() {
         {/* Right: Top Selling Batches (6 cols) */}
         <div className="lg:col-span-6 bg-surface-container-lowest p-6 border border-outline-variant space-y-4">
           <h3 className="font-title-md text-title-md uppercase font-bold text-primary border-b border-outline-variant/60 pb-2">
-            Top Performing Formulations
+            Top Performing Products
           </h3>
 
           <div className="space-y-3 divide-y divide-outline-variant/40">

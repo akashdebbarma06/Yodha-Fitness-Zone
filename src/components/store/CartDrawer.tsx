@@ -92,14 +92,14 @@ export function CartDrawer() {
                   <strong className="text-primary font-bold">
                     {formatINR(amountToFreeShipping)}
                   </strong>{" "}
-                  more for Complimentary Express Shipping
+                  more for Free Shipping
                 </span>
               ) : (
                 <span className="text-secondary font-bold flex items-center gap-1">
                   <span className="material-symbols-outlined text-[16px]">
                     check_circle
                   </span>
-                  Complimentary Express Shipping Unlocked
+                  Free Shipping Unlocked
                 </span>
               )}
               <span className="font-semibold text-outline">
@@ -125,8 +125,7 @@ export function CartDrawer() {
                   Your bag is empty
                 </p>
                 <p className="font-body-sm text-body-sm text-on-surface-variant max-w-xs mt-1">
-                  Explore clinical-grade sports nutrition formulated for maximum
-                  cellular recovery.
+                  Browse our supplements and add items to your bag.
                 </p>
                 <Link
                   href="/shop"
@@ -258,7 +257,7 @@ export function CartDrawer() {
                     type="text"
                     value={couponCode}
                     onChange={(e) => setCouponCode(e.target.value)}
-                    placeholder="Coupon code (e.g. YODHA15)"
+                    placeholder="Coupon code"
                     className="flex-1 h-10 px-3 bg-surface border border-outline-variant text-body-sm font-body-sm uppercase tracking-wider focus:outline-none focus:border-primary"
                   />
                   <button
@@ -297,7 +296,7 @@ export function CartDrawer() {
                 )}
 
                 <div className="flex justify-between text-on-surface-variant">
-                  <span>Express Cold-Chain Dispatch</span>
+                  <span>Shipping</span>
                   <span className="text-on-surface font-semibold">
                     {shipping === 0 ? "FREE" : formatINR(shipping)}
                   </span>
@@ -321,7 +320,7 @@ export function CartDrawer() {
                   onClick={closeCart}
                   className="w-full h-12 bg-primary hover:bg-neutral-800 text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-colors"
                 >
-                  <span>Proceed to Express Checkout</span>
+                  <span>Proceed to Checkout</span>
                   <span className="material-symbols-outlined text-[18px]">
                     arrow_forward
                   </span>
@@ -347,16 +346,9 @@ export function CartDrawer() {
                 <span>•</span>
                 <span className="flex items-center gap-1">
                   <span className="material-symbols-outlined text-[14px]">
-                    ac_unit
-                  </span>
-                  Sub-8°C Logistics
-                </span>
-                <span>•</span>
-                <span className="flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]">
                     verified
                   </span>
-                  100% Authentic
+                  Secure Checkout
                 </span>
               </div>
             </div>

@@ -216,10 +216,11 @@ export default function CustomerRegisterPage() {
       {/* Left Column: Visual & Brand Narrative (5 cols) */}
       <div className="hidden lg:flex lg:col-span-5 relative bg-primary text-on-primary p-12 flex-col justify-between overflow-hidden">
         <div className="absolute inset-0 z-0">
+          {/* TODO: Replace with the gym's real photos. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://lh3.googleusercontent.com/aida/AEtjO1X2ZiGqOhAtGS7qOjlx_AQGwqmO0uI5vJBT8W8WFdmo06fQmdZp2QyUIvd1wXQQUKR-MHul6j-fcFpXrZvNIaxG2qjZ6MgjYOO_MC9cbYQD0eMaijnHlfOwxVYdcvP7DhJ8cGMURWx_yJo8yqY4KH14J3PGL7yjdcjk9FIkDX8eykztQP0XK--yTNv7NgQIMhqXAk1dCoA3B80GXpACHpcQ9IZXR6HfojK0n0UrP6L4"
-            alt="Yodha Fitness Zone Registration"
+            src="/images/placeholder-gym.jpg"
+            alt="Gym training area"
             className="w-full h-full object-cover grayscale opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80" />
@@ -232,7 +233,7 @@ export default function CustomerRegisterPage() {
           >
             <span>YODHA</span>
             <span className="text-secondary-fixed text-xs font-semibold px-1.5 py-0.5 bg-white/10 border border-white/20">
-              ATHLETIC
+              FITNESS ZONE
             </span>
           </Link>
 
@@ -247,18 +248,18 @@ export default function CustomerRegisterPage() {
 
         <div className="relative z-10 space-y-4 max-w-sm">
           <span className="font-label-sm text-label-sm uppercase tracking-[0.2em] text-secondary-fixed font-bold">
-            ATHLETE ONBOARDING
+            CREATE AN ACCOUNT
           </span>
           <h2 className="font-headline-lg text-headline-lg uppercase font-semibold leading-tight tracking-tight">
-            JOIN THE ELEVATED ATHLETIC ROSTER.
+            WELCOME TO YODHA FITNESS ZONE
           </h2>
           <p className="font-body-sm text-body-sm text-surface-container-high leading-relaxed">
-            Create an athlete profile to store cold-chain delivery coordinates, manage recurring metabolic replenishment, and unlock priority batch reservations.
+            Create an account to shop, track orders, and manage your membership.
           </p>
         </div>
 
         <div className="relative z-10 text-[11px] font-mono text-outline uppercase tracking-wider">
-          FSSAI &amp; INFORMED-SPORT COMPLIANT
+          CHARILAM, TRIPURA
         </div>
       </div>
 
@@ -285,7 +286,7 @@ export default function CustomerRegisterPage() {
               Customer Registration
             </div>
             <h1 className="font-headline-lg text-headline-lg uppercase tracking-tight text-primary font-semibold">
-              {step === "details" ? "Register Athlete Profile" : "Verify Mobile Number"}
+              {step === "details" ? "Create Account" : "Verify Mobile Number"}
             </h1>
             <p className="font-body-md text-body-md text-on-surface-variant">
               {step === "details"
@@ -314,7 +315,7 @@ export default function CustomerRegisterPage() {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Vikram Malhotra"
+                  placeholder="e.g. Akash Debbarma"
                   value={fullName}
                   onChange={(e) => {
                     setFullName(e.target.value);

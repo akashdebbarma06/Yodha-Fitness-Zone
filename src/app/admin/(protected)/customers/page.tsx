@@ -64,7 +64,7 @@ export default function AdminCustomersPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search athlete name, email, city..."
+            placeholder="Search customer name, email, city..."
             className="w-full h-10 pl-9 pr-3 bg-surface border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary"
           />
           <span className="material-symbols-outlined text-[18px] absolute left-2.5 top-1/2 -translate-y-1/2 text-outline">
@@ -75,7 +75,7 @@ export default function AdminCustomersPage() {
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar w-full sm:w-auto">
           {(
             [
-              ["all", "All Athletes"],
+              ["all", "All Customers"],
               ["VIP", "VIP (>₹25k)"],
               ["Subscription", "Active Subscription"],
               ["Dormant", "Dormant (>60d)"],
@@ -102,7 +102,7 @@ export default function AdminCustomersPage() {
         <table className="w-full text-left font-body-sm text-body-sm">
           <thead className="bg-surface-container-low font-label-sm text-label-sm uppercase tracking-wider text-outline border-b border-outline-variant">
             <tr>
-              <th className="p-4">Athlete Profile</th>
+              <th className="p-4">Customer</th>
               <th className="p-4">Mobile Coordinates</th>
               <th className="p-4">Metro City</th>
               <th className="p-4">Total Orders</th>

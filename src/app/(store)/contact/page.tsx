@@ -138,8 +138,8 @@ export default function ContactPage() {
                       className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary uppercase text-xs"
                     >
                       <option value="order">Order Support</option>
-                      <option value="coa">Lab Report / COA</option>
-                      <option value="tour">Gym Tour / Guest Pass</option>
+                      <option value="product">Product Information</option>
+                      <option value="membership">Membership Enquiry</option>
                       <option value="coaching">Personal Training</option>
                       <option value="wholesale">Wholesale Enquiry</option>
                     </select>

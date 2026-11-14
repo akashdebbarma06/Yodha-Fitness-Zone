@@ -90,7 +90,7 @@ export default function AdminShipmentsPage() {
             Ready for Pickup
           </span>
           <span className="text-[11px] text-on-surface-variant">
-            Sub-8°C sensor verification attached
+            Shipping label attached
           </span>
         </div>
       </div>
@@ -132,9 +132,6 @@ export default function AdminShipmentsPage() {
                   <td className="p-4">
                     <span className="font-semibold text-primary block">
                       {shipment.courier}
-                    </span>
-                    <span className="text-[10px] text-secondary font-mono block">
-                      Cold-Chain Insulated
                     </span>
                   </td>
 
@@ -250,7 +247,7 @@ export default function AdminShipmentsPage() {
             </div>
 
             <div className="text-[10px] text-center font-bold uppercase tracking-wider">
-              ★ SUB-8°C THERMAL PHASE CHANGE VERIFIED ★
+              STANDARD COURIER DELIVERY
             </div>
 
             <div className="flex justify-end gap-2 pt-2 border-t border-black">

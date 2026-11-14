@@ -60,7 +60,7 @@ export function CustomerAuthGuard({ children }: { children: React.ReactNode }) {
         <div className="flex flex-col items-center gap-4 max-w-sm text-center">
           <div className="w-8 h-8 border-2 border-primary border-t-transparent animate-spin rounded-full" />
           <p className="font-mono text-xs uppercase tracking-widest text-outline">
-            Verifying Athlete Authentication...
+            Verifying Authentication...
           </p>
         </div>
       </div>

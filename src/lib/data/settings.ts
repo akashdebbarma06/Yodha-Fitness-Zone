@@ -8,13 +8,13 @@ export const STORE_SETTINGS: StoreSettings = {
   originPin: "799103",
   originCity: "Charilam",
   originState: "Tripura",
-  supportEmail: "contact@yodhafitnesszone.in",
+  supportEmail: "contact@yodhafitnesszone.in", // Confirm the gym owns this domain before launch.
   supportPhone: "+91 87987 03787",
   freeShippingThreshold: 1499,
   lowStockAlert: 25,
   razorpayKeyId: "rzp_live_XXXXXXXXXXXXXXX",
   razorpayWebhookSecret: "whsec_XXXXXXXXXXXXXXX",
-  shiprocketEmail: "ops@yodhafitnesszone.in",
+  shiprocketEmail: "ops@yodhafitnesszone.in", // Confirm the gym owns this domain before launch.
   shiprocketToken: "sr_token_XXXXXXXXXXXXXXX",
   twoFactorEnabled: false,
   notifications: {

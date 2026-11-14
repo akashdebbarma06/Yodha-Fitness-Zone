@@ -13,12 +13,12 @@ interface ProductDetailViewProps {
 
 export function ProductDetailView({ product }: ProductDetailViewProps) {
   const router = useRouter();
-  const { addItem, openCart } = useCart();
+  const { addItem } = useCart();
 
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<"macros" | "aminos" | "usage" | "coa">("macros");
+  const [activeTab, setActiveTab] = useState<"macros" | "usage">("macros");
   const [isAdded, setIsAdded] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
 
@@ -36,11 +36,9 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
     router.push("/checkout");
   };
 
-  const servingCost = Math.round(selectedVariant.price / (selectedVariant.servings || 30));
-
   return (
     <div className="w-full flex flex-col">
-      {/* ── Breadcrumbs & Batch Verification Strip ── */}
+      {/* ── Breadcrumbs ── */}
       <section className="w-full bg-surface-container-lowest border-b border-outline-variant/60">
         <div className="max-w-[1360px] mx-auto px-gutter py-2.5 flex flex-wrap items-center justify-between gap-y-2 gap-x-4 text-[11px]">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-label-sm uppercase tracking-wider text-on-surface-variant">
@@ -56,12 +54,6 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
               {product.name}
             </span>
           </nav>
-          <div className="flex items-center gap-2 bg-surface-container px-2.5 py-1 border border-outline-variant">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-            <span className="font-label-sm text-label-sm text-secondary font-semibold tracking-wider uppercase">
-              BATCH #{selectedVariant.batch} VERIFIED
-            </span>
-          </div>
         </div>
       </section>
 
@@ -69,15 +61,15 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
       <section className="w-full bg-surface py-8 lg:py-14 border-b border-outline-variant/60">
         <div className="max-w-[1360px] mx-auto px-gutter">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-            {/* ── Left Column: Gallery & Badges ── */}
+            {/* ── Left Column: Gallery ── */}
             <div className="lg:col-span-6 flex flex-col gap-4">
               {/* Primary Image Frame */}
               <div className="relative bg-surface-container-lowest border border-outline-variant overflow-hidden group">
                 <div className="absolute top-4 left-4 z-10 flex flex-col gap-1.5 items-start">
                   <span className="font-label-sm text-label-sm uppercase tracking-widest px-2.5 py-1 bg-secondary text-on-secondary font-semibold">
-                    {product.suite || "NATIVE CFM ISOLATE"}
+                    {product.suite || "YFZ STORE"}
                   </span>
-                  {selectedVariant.compareAtPrice && (
+                  {selectedVariant.compareAtPrice && selectedVariant.compareAtPrice > selectedVariant.price && (
                     <span className="font-label-sm text-label-sm uppercase tracking-widest px-2.5 py-1 bg-primary text-on-primary font-semibold">
                       SAVE {Math.round(((selectedVariant.compareAtPrice - selectedVariant.price) / selectedVariant.compareAtPrice) * 100)}%
                     </span>
@@ -89,7 +81,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                   className={`absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-surface-container-lowest/90 backdrop-blur border border-outline-variant flex items-center justify-center transition-colors ${
                     isWishlisted ? "text-error" : "text-on-surface hover:text-error"
                   }`}
-                  title="Wishlist formulation"
+                  title="Wishlist product"
                   type="button"
                 >
                   <span
@@ -135,28 +127,6 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                   ))}
                 </div>
               )}
-
-              {/* Trust Guarantees Strip */}
-              <div className="bg-surface-container-low border border-outline-variant p-4 mt-2">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center sm:text-left text-on-surface font-label-sm text-label-sm">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-secondary font-bold">✓</span>
-                    <span className="truncate">100% Grass-Fed</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-secondary font-bold">✓</span>
-                    <span className="truncate">CFM Filtered (&lt;4°C)</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-secondary font-bold">✓</span>
-                    <span className="truncate">Zero Sucralose</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-secondary font-bold">✓</span>
-                    <span className="truncate">Informed-Sport</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* ── Right Column: Info & Purchase Controls ── */}
@@ -164,7 +134,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
               {/* Titles */}
               <div className="flex flex-col gap-2">
                 <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">
-                  YFZ SERIES • {product.category}
+                  {product.category}
                 </span>
                 <h1 className="font-headline-lg text-headline-lg uppercase tracking-tight text-primary font-semibold">
                   {product.name}
@@ -174,29 +144,35 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                 </p>
               </div>
 
-              {/* Reviews & Stock Ribbon */}
+              {/* Reviews & Stock Ribbon — only show reviews if real reviews exist */}
               <div className="flex flex-wrap items-center justify-between gap-3 py-2.5 border-y border-outline-variant/60">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1 text-[#C59B27] font-semibold">
-                    <span
-                      className="material-symbols-outlined text-[16px]"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      star
-                    </span>
-                    <span className="text-on-surface font-label-sm text-label-sm">
-                      {product.rating || 4.9}
+                {product.reviewCount > 0 ? (
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 text-[#C59B27] font-semibold">
+                      <span
+                        className="material-symbols-outlined text-[16px]"
+                        style={{ fontVariationSettings: "'FILL' 1" }}
+                      >
+                        star
+                      </span>
+                      <span className="text-on-surface font-label-sm text-label-sm">
+                        {product.rating}
+                      </span>
+                    </div>
+                    <span className="text-outline-variant">|</span>
+                    <span className="font-label-sm text-label-sm text-on-surface-variant">
+                      {product.reviewCount} customer reviews
                     </span>
                   </div>
-                  <span className="text-outline-variant">|</span>
+                ) : (
                   <span className="font-label-sm text-label-sm text-on-surface-variant">
-                    {product.reviewCount || 428} verified athlete reviews
+                    Sports Nutrition &amp; Accessories
                   </span>
-                </div>
+                )}
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-secondary" />
                   <span className="font-label-sm text-label-sm text-secondary font-medium">
-                    In Stock • Dispatches in 24 hrs
+                    {selectedVariant.stock > 0 ? "In Stock" : "Stock details to be updated"}
                   </span>
                 </div>
               </div>
@@ -207,33 +183,28 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                   <span className="font-metric-num text-[36px] leading-none text-primary font-bold">
                     {formatINR(selectedVariant.price)}
                   </span>
-                  {selectedVariant.compareAtPrice && (
+                  {selectedVariant.compareAtPrice && selectedVariant.compareAtPrice > selectedVariant.price ? (
                     <span className="font-title-md text-title-md line-through text-outline">
                       {formatINR(selectedVariant.compareAtPrice)}
                     </span>
-                  )}
-                  {selectedVariant.compareAtPrice && (
+                  ) : null}
+                  {selectedVariant.compareAtPrice && selectedVariant.compareAtPrice > selectedVariant.price ? (
                     <span className="font-label-sm text-label-sm uppercase px-2 py-0.5 bg-secondary/15 text-secondary font-bold">
                       Save {formatINR(selectedVariant.compareAtPrice - selectedVariant.price)}
                     </span>
-                  )}
+                  ) : null}
                 </div>
                 <p className="font-label-sm text-label-sm text-on-surface-variant mt-1">
-                  Inclusive of all taxes. Free express cold-chain delivery across India on this order.
+                  Inclusive of all taxes. Pan-India shipping available.
                 </p>
               </div>
 
-              {/* Package Mass / Variant Yield Selector */}
-              {product.variants.length > 0 && (
+              {/* Package Size / Variant Selector */}
+              {product.variants.length > 1 && (
                 <div className="flex flex-col gap-2.5">
-                  <div className="flex justify-between items-center">
-                    <label className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-bold">
-                      Package Size / Serving Yield
-                    </label>
-                    <span className="font-label-sm text-label-sm text-secondary font-medium">
-                      ₹{servingCost} per {selectedVariant.servings || 30} servings
-                    </span>
-                  </div>
+                  <label className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-bold">
+                    Options / Sizes
+                  </label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                     {product.variants.map((v, idx) => (
                       <button
@@ -250,28 +221,13 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                           {v.size}
                         </span>
                         <span className="block font-label-sm text-label-sm text-on-surface-variant">
-                          {v.servings} Servings • {formatINR(v.price)}
+                          {formatINR(v.price)}
                         </span>
                       </button>
                     ))}
                   </div>
                 </div>
               )}
-
-              {/* Flavor Selector */}
-              <div className="flex flex-col gap-2">
-                <label className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-bold">
-                  Formulation Flavor
-                </label>
-                <div className="p-3 bg-surface-container-low border border-outline-variant flex items-center justify-between">
-                  <span className="font-body-sm text-body-sm font-semibold text-primary">
-                    {selectedVariant.flavor}
-                  </span>
-                  <span className="font-label-sm text-label-sm text-secondary uppercase font-semibold">
-                    Natural Flavor
-                  </span>
-                </div>
-              </div>
 
               {/* Quantity & CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
@@ -329,16 +285,16 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                 </button>
               </div>
 
-              {/* Express dispatch notice */}
+              {/* Dispatch notice */}
               <div className="p-3.5 bg-surface-container-high border border-outline-variant/60 flex items-center gap-3 text-body-sm font-body-sm text-on-surface">
                 <span className="material-symbols-outlined text-secondary text-[22px]">
                   local_shipping
                 </span>
                 <div>
                   <span className="font-semibold text-primary">
-                    Fast Dispatch:
+                    Shipping:
                   </span>{" "}
-                  Orders placed before 2 PM ship the same day.
+                  Dispatched from Charilam, Tripura with tracking.
                 </div>
               </div>
             </div>
@@ -346,7 +302,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
         </div>
       </section>
 
-      {/* ── Clinical Rigor, Macro Profile & COA Tabs ── */}
+      {/* ── Product Information Tabs ── */}
       <section className="w-full bg-surface-container-lowest py-16 px-gutter border-b border-outline-variant">
         <div className="max-w-[1360px] mx-auto">
           {/* Tab Navigation */}
@@ -360,19 +316,7 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                   : "border-transparent text-on-surface-variant hover:text-primary"
               }`}
             >
-              Nutritional Macros
-            </button>
-
-            <button
-              onClick={() => setActiveTab("aminos")}
-              type="button"
-              className={`pb-3 font-label-md text-label-md uppercase tracking-wider font-semibold transition-colors border-b-2 ${
-                activeTab === "aminos"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-on-surface-variant hover:text-primary"
-              }`}
-            >
-              Amino Acid Profile
+              Product Details &amp; Ingredients
             </button>
 
             <button
@@ -384,32 +328,17 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                   : "border-transparent text-on-surface-variant hover:text-primary"
               }`}
             >
-              Usage &amp; Dosage
-            </button>
-
-            <button
-              onClick={() => setActiveTab("coa")}
-              type="button"
-              className={`pb-3 font-label-md text-label-md uppercase tracking-wider font-semibold transition-colors border-b-2 ${
-                activeTab === "coa"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-on-surface-variant hover:text-primary"
-              }`}
-            >
-              Certificate of Analysis (COA)
+              Usage &amp; Storage
             </button>
           </div>
 
-          {/* Tab Content: Macros */}
+          {/* Tab Content: Details */}
           {activeTab === "macros" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               <div>
                 <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mb-3">
-                  Nutritional Composition Per Serving
+                  Nutritional Composition
                 </h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant mb-6 leading-relaxed">
-                  Nutritional values per serving. No amino spiking or hidden fillers.
-                </p>
                 <div className="border border-outline-variant divide-y divide-outline-variant">
                   {product.nutrition && product.nutrition.length > 0 ? (
                     product.nutrition.map((item, i) => (
@@ -427,7 +356,9 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                       </div>
                     ))
                   ) : (
-                    <div className="p-4 text-outline">Macro data available in batch sheet.</div>
+                    <div className="p-4 text-outline font-body-sm">
+                      Nutritional details to be provided by the gym.
+                    </div>
                   )}
                 </div>
               </div>
@@ -437,133 +368,21 @@ export function ProductDetailView({ product }: ProductDetailViewProps) {
                   Ingredients
                 </span>
                 <p className="font-body-sm text-body-sm text-on-surface leading-relaxed">
-                  {product.ingredients || "Cold-filtered Native Whey Protein Isolate (Milk), Natural Flavors, Sunflower Lecithin (<0.5% for instant mixability), Stevia Leaf Extract."}
+                  {product.ingredients || "Ingredients to be provided by the gym."}
                 </p>
-                <div className="pt-2 border-t border-outline-variant text-[11px] text-outline uppercase tracking-wider">
-                  ALLERGEN WARNING: CONTAINS DAIRY (MILK). MANUFACTURED IN AN NSF-CERTIFIED CLEANROOM FACILITY.
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Tab Content: Amino Acid Profile */}
-          {activeTab === "aminos" && (
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mb-1">
-                  Amino Acid Profile
-                </h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant">
-                  Naturally occurring amino acids per 100g protein.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {product.aminoAcids && product.aminoAcids.length > 0 ? (
-                  product.aminoAcids.map((aa, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3 bg-surface-container-low border border-outline-variant/60 flex items-center justify-between"
-                    >
-                      <span className="font-body-sm text-body-sm font-semibold text-primary">
-                        {aa.name}
-                      </span>
-                      <span className="font-mono text-secondary font-bold text-body-sm">
-                        {aa.amount}
-                      </span>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-outline">Complete amino breakdown verified on batch certificate.</p>
-                )}
               </div>
             </div>
           )}
 
           {/* Tab Content: Usage */}
           {activeTab === "usage" && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 bg-surface-container-low border border-outline-variant">
-                <div className="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold mb-4">
-                  01
-                </div>
-                <h4 className="font-title-md text-title-md font-semibold text-primary uppercase mb-2">
-                  After Training
-                </h4>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Mix 1 scoop (33g) with 250ml water or milk within 30–45 minutes after training.
-                </p>
-              </div>
-
-              <div className="p-6 bg-surface-container-low border border-outline-variant">
-                <div className="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold mb-4">
-                  02
-                </div>
-                <h4 className="font-title-md text-title-md font-semibold text-primary uppercase mb-2">
-                  Morning Use
-                </h4>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Use in the morning for a quick protein boost. Easy to digest with no bloating.
-                </p>
-              </div>
-
-              <div className="p-6 bg-surface-container-low border border-outline-variant">
-                <div className="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold mb-4">
-                  03
-                </div>
-                <h4 className="font-title-md text-title-md font-semibold text-primary uppercase mb-2">
-                  Mixing
-                </h4>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Dissolves in seconds with no clumps or residue.
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Tab Content: Certificate of Analysis (COA) */}
-          {activeTab === "coa" && (
-            <div className="p-8 bg-surface-container-low border border-outline-variant flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="space-y-3 max-w-xl">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 bg-secondary" />
-                  <span className="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">
-                    Third-Party Lab Tested
-                  </span>
-                </div>
-                <h3 className="font-headline-sm text-headline-sm font-semibold uppercase text-primary">
-                  Batch #{selectedVariant.batch} Certificate of Analysis
-                </h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  Independently tested for protein purity and heavy metals.
-                </p>
-                <div className="pt-2 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-mono">
-                  <div>
-                    <span className="text-outline block">LEAD (Pb):</span>
-                    <span className="text-secondary font-bold">&lt;0.005 ppm</span>
-                  </div>
-                  <div>
-                    <span className="text-outline block">ARSENIC (As):</span>
-                    <span className="text-secondary font-bold">&lt;0.005 ppm</span>
-                  </div>
-                  <div>
-                    <span className="text-outline block">PROTEIN ASSAY:</span>
-                    <span className="text-secondary font-bold">99.6% purity</span>
-                  </div>
-                </div>
-              </div>
-
-              <a
-                href={product.coaUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3.5 bg-primary hover:bg-neutral-800 text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center gap-2 shrink-0 transition-colors shadow-sm"
-              >
-                <span className="material-symbols-outlined text-[18px]">
-                  download
-                </span>
-                <span>Download Lab PDF</span>
-              </a>
+            <div className="p-6 bg-surface-container-low border border-outline-variant">
+              <h4 className="font-title-md text-title-md font-semibold text-primary uppercase mb-2">
+                Directions for Use
+              </h4>
+              <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                {product.usage || "Directions for use to be provided by the gym."}
+              </p>
             </div>
           )}
         </div>

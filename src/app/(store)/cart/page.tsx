@@ -179,7 +179,7 @@ export default function CartPage() {
                           {item.variant.size} • {item.variant.flavor}
                         </p>
                         <span className="font-mono text-xs text-outline">
-                          SKU: {item.variant.sku} • Batch: #{item.variant.batch}
+                          SKU: {item.variant.sku}
                         </span>
 
                         <div className="pt-2 flex items-center gap-4 text-xs font-semibold text-outline">
@@ -248,49 +248,14 @@ export default function CartPage() {
                 ))}
               </div>
 
-              {/* Guarantees Box */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-5 bg-surface-container-low border border-outline-variant">
-                <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-[24px] text-secondary">
-                    ac_unit
-                  </span>
-                  <div>
-                    <span className="font-label-sm text-label-sm uppercase font-bold text-primary block">
-                      Sub-8°C Packaging
-                    </span>
-                    <span className="text-xs text-on-surface-variant">
-                      Thermally insulated packaging
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-[24px] text-secondary">
-                    verified
-                  </span>
-                  <div>
-                    <span className="font-label-sm text-label-sm uppercase font-bold text-primary block">
-                      QR Lab Report
-                    </span>
-                    <span className="text-xs text-on-surface-variant">
-                      Third-party lab report included
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-[24px] text-secondary">
-                    flight_takeoff
-                  </span>
-                  <div>
-                    <span className="font-label-sm text-label-sm uppercase font-bold text-primary block">
-                      Blue Dart Air Priority
-                    </span>
-                    <span className="text-xs text-on-surface-variant">
-                      Pan-India delivery
-                    </span>
-                  </div>
-                </div>
+              {/* Shipping Notice */}
+              <div className="p-4 bg-surface-container-low border border-outline-variant flex items-center gap-3">
+                <span className="material-symbols-outlined text-[20px] text-secondary">
+                  local_shipping
+                </span>
+                <span className="text-xs text-on-surface-variant">
+                  Dispatched from Charilam, Tripura with tracking.
+                </span>
               </div>
             </div>
 
@@ -326,7 +291,7 @@ export default function CartPage() {
                       type="text"
                       value={couponInput}
                       onChange={(e) => setCouponInput(e.target.value)}
-                      placeholder="Promo code (e.g. YODHA15)"
+                      placeholder="Promo code"
                       className="flex-1 h-11 px-3 bg-surface border border-outline-variant text-body-sm font-body-sm uppercase tracking-wider focus:outline-none focus:border-primary"
                     />
                     <button

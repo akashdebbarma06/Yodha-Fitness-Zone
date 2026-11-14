@@ -136,7 +136,7 @@ export default function AdminSettingsPage() {
                 className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-mono font-bold focus:outline-none focus:border-primary"
               />
               <span className="text-[11px] text-outline mt-1 block">
-                Orders above this amount unlock free cold-chain express dispatch.
+                Orders above this amount unlock free shipping.
               </span>
             </div>
 
@@ -214,7 +214,7 @@ export default function AdminSettingsPage() {
                 }
                 className="w-4 h-4 accent-primary"
               />
-              <span>Send automated dispatch telemetry &amp; COA link to customers via SMS / Email</span>
+              <span>Send automated order confirmation and tracking details to customers via SMS / Email</span>
             </label>
 
             <label className="flex items-center gap-3 cursor-pointer">

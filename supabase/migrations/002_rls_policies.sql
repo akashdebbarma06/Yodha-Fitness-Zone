@@ -1,5 +1,5 @@
 -- ==============================================================================
--- KAIRO Athletic & Nutrition — Row Level Security (RLS) Policies
+-- Yodha Fitness Zone — Row Level Security (RLS) Policies
 -- Migration 002: Least-Privilege Access & Privilege Escalation Prevention
 -- ==============================================================================
 

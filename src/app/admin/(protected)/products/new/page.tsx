@@ -51,10 +51,10 @@ export default function NewProductPage() {
               Products
             </Link>
             <span>/</span>
-            <span className="text-primary">Add / Edit Formulation</span>
+            <span className="text-primary">Add / Edit Product</span>
           </nav>
           <h1 className="font-headline-md text-headline-md font-semibold uppercase tracking-tight text-primary">
-            Formulation Specification Builder
+            Add / Edit Product
           </h1>
         </div>
 
@@ -71,7 +71,7 @@ export default function NewProductPage() {
             disabled={saving}
             className="px-6 py-2 bg-primary hover:bg-neutral-800 text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center gap-2 transition-colors shadow-sm"
           >
-            {saving ? "Deploying..." : "Deploy Formulation"}
+            {saving ? "Saving..." : "Save Product"}
           </button>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default function NewProductPage() {
       {savedSuccess && (
         <div className="p-4 bg-secondary/15 border border-secondary/30 text-secondary flex items-center gap-2 text-xs font-semibold uppercase tracking-wider">
           <span className="material-symbols-outlined text-[18px]">check_circle</span>
-          <span>Formulation deployed successfully. Returning to catalog...</span>
+          <span>Product saved successfully. Returning to catalog...</span>
         </div>
       )}
 
@@ -87,13 +87,13 @@ export default function NewProductPage() {
         {/* Section 1: Core Identity */}
         <div className="bg-surface-container-lowest p-6 border border-outline-variant space-y-4 shadow-sm">
           <h2 className="font-title-md text-title-md uppercase font-bold text-primary border-b border-outline-variant/60 pb-2">
-            01. Formulation Identity
+            01. Product Details
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs uppercase tracking-wider font-semibold text-on-surface-variant mb-1">
-                Formulation Title *
+                Product Name *
               </label>
               <input
                 type="text"
@@ -150,7 +150,7 @@ export default function NewProductPage() {
 
           <div>
             <label className="block text-xs uppercase tracking-wider font-semibold text-on-surface-variant mb-1">
-              Clinical Formulation Narrative
+              Product Description
             </label>
             <textarea
               rows={3}
@@ -164,7 +164,7 @@ export default function NewProductPage() {
         {/* Section 2: Variant Pricing & Inventory SKU */}
         <div className="bg-surface-container-lowest p-6 border border-outline-variant space-y-4 shadow-sm">
           <h2 className="font-title-md text-title-md uppercase font-bold text-primary border-b border-outline-variant/60 pb-2">
-            02. Variant Pricing &amp; Warehouse Inventory
+            02. Pricing &amp; Stock
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">

@@ -44,11 +44,11 @@ export default function AdminDashboardPage() {
             </h1>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-secondary/15 text-secondary font-label-sm text-label-sm uppercase tracking-wider font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-              Pan-India Cold Chain Online
+              Store Online
             </span>
           </div>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-            Real-time single-owner telemetry • Sovereign command over formulation catalog, fulfillment, and revenue velocity.
+            Manage products, orders, members and revenue.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function AdminDashboardPage() {
           <div className="flex items-start justify-between">
             <div>
               <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline block font-semibold">
-                Gross GMV Velocity
+                Total Revenue
               </span>
               <p className="font-metric-num text-[32px] text-primary font-bold mt-1">
                 {formatINR(REPORT_DATA.grossGmv)}
@@ -130,9 +130,9 @@ export default function AdminDashboardPage() {
           <div className="flex items-center justify-between text-xs font-semibold pt-2 border-t border-outline-variant/60">
             <span className="text-secondary flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">trending_up</span>
-              +14.2% Growth
+              Revenue
             </span>
-            <span className="text-outline">vs prior 30d window</span>
+            <span className="text-outline">Overview</span>
           </div>
         </div>
 
@@ -141,7 +141,7 @@ export default function AdminDashboardPage() {
           <div className="flex items-start justify-between">
             <div>
               <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline block font-semibold">
-                Total Orders Ingested
+                Total Orders
               </span>
               <p className="font-metric-num text-[32px] text-primary font-bold mt-1">
                 {REPORT_DATA.totalOrders.toLocaleString("en-IN")}
@@ -156,7 +156,7 @@ export default function AdminDashboardPage() {
           <div className="flex items-center justify-between text-xs font-semibold pt-2 border-t border-outline-variant/60">
             <span className="text-secondary flex items-center gap-1">
               <span className="material-symbols-outlined text-[14px]">trending_up</span>
-              +8.6% Velocity
+              Orders
             </span>
             <span className="text-outline">Avg. {formatINR(REPORT_DATA.avgOrderValue)}</span>
           </div>
@@ -180,8 +180,8 @@ export default function AdminDashboardPage() {
             </div>
           </div>
           <div className="flex items-center justify-between text-xs font-semibold pt-2 border-t border-outline-variant/60">
-            <span className="text-secondary font-bold">Top Quartile</span>
-            <span className="text-outline">3,892 Athletes</span>
+            <span className="text-secondary font-bold">Retention</span>
+            <span className="text-outline">Customers</span>
           </div>
         </div>
 
@@ -215,56 +215,62 @@ export default function AdminDashboardPage() {
         </div>
       </div>
 
-      {/* ── Daily Revenue Velocity & Dispatch Manifest ── */}
+      {/* ── Daily Revenue & Orders ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left: Revenue Velocity SVG Chart (8 cols) */}
+        {/* Left: Revenue Chart (8 cols) */}
         <div className="lg:col-span-8 bg-surface-container-lowest p-6 border border-outline-variant space-y-6">
           <div className="flex items-center justify-between border-b border-outline-variant/60 pb-3">
             <div>
               <h2 className="font-title-md text-title-md uppercase font-bold text-primary">
-                Gross Fulfillment Trajectory (October)
+                Revenue Overview
               </h2>
               <p className="font-body-sm text-body-sm text-on-surface-variant">
-                Daily order volume and air linehaul consignments
+                Daily orders and revenue
               </p>
             </div>
             <span className="font-mono text-xs text-secondary font-bold">
-              30-DAY WATERFALL
+              30-DAY VIEW
             </span>
           </div>
 
           {/* Clean Vector Chart */}
           <div className="h-64 w-full relative flex items-end gap-2 pt-4">
-            {REPORT_DATA.dailyVelocity.map((day, idx) => {
-              const maxRev = 75000;
-              const heightPercent = Math.min(100, Math.round((day.revenue / maxRev) * 100));
+            {REPORT_DATA.grossGmv === 0 ? (
+              <div className="w-full h-full flex items-center justify-center text-outline text-xs uppercase tracking-wider">
+                No sales data yet
+              </div>
+            ) : (
+              REPORT_DATA.dailyVelocity.map((day, idx) => {
+                const maxRev = 75000;
+                const heightPercent = Math.min(100, Math.round((day.revenue / maxRev) * 100));
 
-              return (
-                <div
-                  key={idx}
-                  className="flex-1 flex flex-col items-center gap-1 group relative h-full justify-end"
-                >
-                  {/* Tooltip on hover */}
-                  <div className="absolute -top-10 hidden group-hover:flex flex-col items-center z-10 bg-primary text-on-primary text-[10px] px-2 py-1 shadow-lg whitespace-nowrap pointer-events-none">
-                    <span>{day.date}: {formatINR(day.revenue)}</span>
-                    <span className="text-secondary-fixed">{day.orders} orders</span>
-                  </div>
-
+                return (
                   <div
-                    className="w-full bg-surface-container-high group-hover:bg-secondary transition-all"
-                    style={{ height: `${heightPercent}%` }}
-                  />
-                  <span className="text-[9px] font-mono text-outline truncate block">
-                    {day.date.split(" ")[0]}
-                  </span>
-                </div>
-              );
-            })}
+                    key={idx}
+                    className="flex-1 flex flex-col items-center gap-1 group relative h-full justify-end"
+                  >
+                    {/* Tooltip on hover */}
+                    <div className="absolute -top-10 hidden group-hover:flex flex-col items-center z-10 bg-primary text-on-primary text-[10px] px-2 py-1 shadow-lg whitespace-nowrap pointer-events-none">
+                      <span>{day.date}: {formatINR(day.revenue)}</span>
+                      <span className="text-secondary-fixed">{day.orders} orders</span>
+                    </div>
+
+                    <div
+                      className="w-full bg-surface-container-high group-hover:bg-secondary transition-all"
+                      style={{ height: `${heightPercent}%` }}
+                    />
+                    <span className="text-[9px] font-mono text-outline truncate block">
+                      {day.date.split(" ")[0]}
+                    </span>
+                  </div>
+                );
+              })
+            )}
           </div>
 
           <div className="flex items-center justify-between pt-2 border-t border-outline-variant/60 text-xs font-mono text-outline">
-            <span>ORIGIN: Bengaluru Air Hub (BLR)</span>
-            <span>CARRIER CONCURRENCY: Blue Dart Apex (74%), Delhivery (26%)</span>
+            <span>Origin: Charilam, Tripura (799103)</span>
+            <span>Carrier: Courier Partner / Shiprocket</span>
           </div>
         </div>
 
@@ -389,7 +395,7 @@ export default function AdminDashboardPage() {
                 <th className="p-3">Order ID</th>
                 <th className="p-3">Customer</th>
                 <th className="p-3">Destination</th>
-                <th className="p-3">Formulations</th>
+                <th className="p-3">Products</th>
                 <th className="p-3">Amount</th>
                 <th className="p-3">Payment</th>
                 <th className="p-3">Fulfillment</th>

@@ -35,7 +35,7 @@ export function AdminSidebar() {
               OPS
             </span>
           </Link>
-          <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" title="Live Operations Node" />
+          <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" title="Live Operations" />
         </div>
 
         {/* Navigation Links */}

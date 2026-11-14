@@ -42,7 +42,7 @@ export function useAuth() {
           profile?.full_name ||
           (authUser.user_metadata?.full_name as string) ||
           (authUser.user_metadata?.name as string) ||
-          "Athlete";
+          "Member";
         const role = (profile?.role as UserRole) || "customer";
 
         setUser({

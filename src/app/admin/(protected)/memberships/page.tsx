@@ -103,7 +103,7 @@ export default function AdminMembershipsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <span className="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">
-            FACILITY &amp; ATHLETE OPERATIONS
+            MEMBERSHIP OPERATIONS
           </span>
           <h1 className="font-headline-lg text-headline-lg uppercase font-bold text-primary mt-1">
             Memberships Management
@@ -345,14 +345,14 @@ export default function AdminMembershipsPage() {
             <form onSubmit={handleAddWalkIn} className="space-y-4">
               <div>
                 <label className="block text-xs uppercase tracking-wider font-semibold text-on-surface-variant mb-1">
-                  Athlete Full Name *
+                  Member Full Name *
                 </label>
                 <input
                   type="text"
                   required
                   value={newMember.userName}
                   onChange={(e) => setNewMember({ ...newMember, userName: e.target.value })}
-                  placeholder="e.g. Rahul Deb"
+                  placeholder="e.g. Member Name"
                   className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary"
                 />
               </div>
@@ -380,7 +380,7 @@ export default function AdminMembershipsPage() {
                     type="email"
                     value={newMember.userEmail}
                     onChange={(e) => setNewMember({ ...newMember, userEmail: e.target.value })}
-                    placeholder="athlete@example.com"
+                    placeholder="member@example.com"
                     className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary"
                   />
                 </div>

@@ -5,46 +5,19 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/data/products";
 import { ProductCard } from "@/components/store/ProductCard";
-import type { ProductCategory } from "@/types";
 
 const CATEGORIES: { label: string; value: string; count: number }[] = [
-  { label: "All Formulations", value: "all", count: PRODUCTS.length },
+  { label: "All Products", value: "all", count: PRODUCTS.length },
   {
-    label: "Native Whey Isolates",
-    value: "Native Whey Isolates",
-    count: PRODUCTS.filter((p) => p.category === "Native Whey Isolates").length,
+    label: "Sports Nutrition",
+    value: "Sports Nutrition",
+    count: PRODUCTS.filter((p) => p.category === "Sports Nutrition").length,
   },
   {
-    label: "Cellular ATP & Creatine",
-    value: "Cellular ATP & Creatine",
-    count: PRODUCTS.filter((p) => p.category === "Cellular ATP & Creatine").length,
+    label: "Fitness Essentials",
+    value: "Fitness Essentials",
+    count: PRODUCTS.filter((p) => p.category === "Fitness Essentials").length,
   },
-  {
-    label: "Mineral Hydration & Electrolytes",
-    value: "Mineral Hydration & Electrolytes",
-    count: PRODUCTS.filter(
-      (p) => p.category === "Mineral Hydration & Electrolytes"
-    ).length,
-  },
-  {
-    label: "Recovery & Adaptogens",
-    value: "Recovery & Adaptogens",
-    count: PRODUCTS.filter((p) => p.category === "Recovery & Adaptogens").length,
-  },
-  {
-    label: "Performance Hardware",
-    value: "Performance Hardware",
-    count: PRODUCTS.filter((p) => p.category === "Performance Hardware").length,
-  },
-];
-
-const DIETARY_OPTIONS = [
-  "Zero Sucralose",
-  "Grass-Fed",
-  "Vegan",
-  "Gluten-Free",
-  "Informed-Sport",
-  "Non-GMO",
 ];
 
 function ShopContent() {
@@ -54,21 +27,13 @@ function ShopContent() {
 
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
-  const [selectedDietary, setSelectedDietary] = useState<string[]>([]);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sortBy, setSortBy] = useState<string>("featured");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-  const toggleDietary = (item: string) => {
-    setSelectedDietary((prev) =>
-      prev.includes(item) ? prev.filter((d) => d !== item) : [...prev, item]
-    );
-  };
-
   const clearAllFilters = () => {
     setSelectedCategory("all");
     setSearchQuery("");
-    setSelectedDietary([]);
     setInStockOnly(false);
     setSortBy("featured");
   };
@@ -92,14 +57,6 @@ function ShopContent() {
         if (!matchesName && !matchesDesc && !matchesSub) return false;
       }
 
-      // Dietary filter
-      if (selectedDietary.length > 0) {
-        const matchesDietary = selectedDietary.every((d) =>
-          product.dietary.some((pd) => pd.toLowerCase() === d.toLowerCase())
-        );
-        if (!matchesDietary) return false;
-      }
-
       // In Stock filter
       if (inStockOnly) {
         const hasStock = product.variants.some((v) => v.stock > 0);
@@ -116,16 +73,12 @@ function ShopContent() {
           return priceA - priceB;
         case "price-desc":
           return priceB - priceA;
-        case "rating":
-          return b.rating - a.rating;
-        case "purity":
-          return b.coaVerified ? 1 : -1;
         case "featured":
         default:
           return 0;
       }
     });
-  }, [selectedCategory, searchQuery, selectedDietary, inStockOnly, sortBy]);
+  }, [selectedCategory, searchQuery, inStockOnly, sortBy]);
 
   return (
     <div className="w-full flex flex-col">
@@ -137,15 +90,15 @@ function ShopContent() {
               Home
             </Link>
             <span className="text-outline">/</span>
-            <span className="text-on-surface font-semibold">Shop All Supplements</span>
+            <span className="text-on-surface font-semibold">Shop</span>
           </nav>
           <div className="flex items-center gap-space-md text-on-surface-variant font-label-sm uppercase tracking-wider">
             <span className="flex items-center gap-1.5 text-secondary font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-              Active Lab Verified
+              Pan-India Shipping
             </span>
             <span className="text-outline hidden sm:inline">•</span>
-            <span className="hidden sm:inline">Shipped from Mumbai</span>
+            <span className="hidden sm:inline">Dispatched from Charilam, Tripura</span>
           </div>
         </div>
       </section>
@@ -154,38 +107,24 @@ function ShopContent() {
       <section className="w-full bg-surface py-10 lg:py-14 px-gutter border-b border-outline-variant/40">
         <div className="max-w-[1360px] mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
           <div className="max-w-3xl flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <span className="font-label-sm text-label-sm uppercase tracking-[0.14em] text-secondary font-semibold bg-secondary/10 px-2.5 py-1 border border-secondary/20">
-                Clinical Grade
-              </span>
-              <span className="font-label-sm text-label-sm text-outline tracking-wider uppercase">
-                FSSAI Lic. 10020011003412
-              </span>
-            </div>
+            <span className="font-label-sm text-label-sm uppercase tracking-[0.14em] text-secondary font-semibold">
+              STORE
+            </span>
             <h1 className="font-headline-lg text-headline-lg uppercase text-primary tracking-tight font-semibold">
-              Supplements
+              Products
             </h1>
             <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
-              Whey isolates, creatine, electrolytes, and recovery supplements — lab tested and ready to ship.
+              Supplements and fitness essentials available from Yodha Fitness Zone.
             </p>
           </div>
 
           <div className="flex items-center gap-space-lg bg-surface-container-low px-space-md py-space-sm rounded-lg self-start lg:self-auto border border-outline-variant/40">
             <div className="flex flex-col">
               <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
-                Formulations
+                Catalog
               </span>
               <span className="font-metric-num text-metric-num text-on-surface font-bold">
-                {PRODUCTS.length} Active
-              </span>
-            </div>
-            <div className="w-px h-8 bg-outline-variant" />
-            <div className="flex flex-col">
-              <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
-                Purity
-              </span>
-              <span className="font-metric-num text-metric-num text-secondary font-bold">
-                99.6%
+                {PRODUCTS.length} Listed
               </span>
             </div>
           </div>
@@ -223,31 +162,14 @@ function ShopContent() {
               type="button"
             >
               <span className="material-symbols-outlined text-[18px]">tune</span>
-              <span>Filters {selectedDietary.length > 0 && `(${selectedDietary.length})`}</span>
+              <span>Filters</span>
             </button>
 
             <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline hidden sm:inline">
-              Showing {filteredProducts.length} of {PRODUCTS.length} formulations
+              Showing {filteredProducts.length} of {PRODUCTS.length} products
             </span>
 
-            {/* Active dietary badges */}
-            {selectedDietary.map((d) => (
-              <span
-                key={d}
-                className="hidden md:inline-flex items-center gap-1 px-2.5 py-0.5 bg-surface-container text-on-surface font-label-sm text-label-sm"
-              >
-                {d}
-                <button
-                  onClick={() => toggleDietary(d)}
-                  className="hover:text-error ml-1"
-                  type="button"
-                >
-                  ×
-                </button>
-              </span>
-            ))}
-
-            {(selectedCategory !== "all" || selectedDietary.length > 0 || inStockOnly || searchQuery) && (
+            {(selectedCategory !== "all" || inStockOnly || searchQuery) && (
               <button
                 onClick={clearAllFilters}
                 className="font-label-sm text-label-sm uppercase text-secondary font-semibold hover:underline"
@@ -265,7 +187,7 @@ function ShopContent() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search formulations..."
+                placeholder="Search products..."
                 className="h-9 pl-8 pr-3 bg-surface-container-low text-body-sm font-body-sm text-on-surface placeholder:text-outline border border-outline-variant/60 focus:outline-none focus:border-primary w-44 sm:w-56"
               />
               <span className="material-symbols-outlined text-[16px] absolute left-2.5 top-1/2 -translate-y-1/2 text-outline">
@@ -280,10 +202,8 @@ function ShopContent() {
                 className="h-9 appearance-none bg-surface-container-low text-on-surface font-label-sm text-label-sm uppercase tracking-wider pl-3 pr-8 border border-outline-variant/60 cursor-pointer focus:outline-none focus:border-primary"
               >
                 <option value="featured">Featured</option>
-                <option value="purity">Purity</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
-                <option value="rating">Customer Rating</option>
               </select>
               <span className="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-outline text-[18px]">
                 expand_more
@@ -323,28 +243,6 @@ function ShopContent() {
 
             <div>
               <h3 className="font-label-md text-label-md uppercase tracking-wider text-primary font-bold border-b border-outline-variant/60 pb-2 mb-4">
-                Dietary &amp; Purity Standards
-              </h3>
-              <div className="space-y-2.5">
-                {DIETARY_OPTIONS.map((item) => (
-                  <label
-                    key={item}
-                    className="flex items-center gap-2.5 font-body-sm text-body-sm text-on-surface cursor-pointer select-none"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={selectedDietary.includes(item)}
-                      onChange={() => toggleDietary(item)}
-                      className="w-4 h-4 rounded border-outline accent-primary"
-                    />
-                    <span>{item}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-label-md text-label-md uppercase tracking-wider text-primary font-bold border-b border-outline-variant/60 pb-2 mb-4">
                 Availability
               </h3>
               <label className="flex items-center gap-2.5 font-body-sm text-body-sm text-on-surface cursor-pointer select-none">
@@ -360,10 +258,10 @@ function ShopContent() {
 
             <div className="p-4 bg-surface-container-low border border-outline-variant/40 space-y-2">
               <span className="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-secondary block">
-                Cold-Chain Shipping
+                Shipping
               </span>
               <p className="text-[12px] text-on-surface-variant leading-relaxed">
-                All orders are packed with thermal insulation for freshness during transit.
+                Dispatched from Charilam, Tripura with tracking.
               </p>
             </div>
           </aside>
@@ -376,7 +274,7 @@ function ShopContent() {
                   search_off
                 </span>
                 <h3 className="font-title-md text-title-md font-semibold text-primary">
-                  No formulations found
+                  No products found
                 </h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant max-w-sm mt-1">
                   Try adjusting your filters to find what you need.

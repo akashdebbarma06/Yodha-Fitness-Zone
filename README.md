@@ -17,22 +17,22 @@
 ## 🚀 Key Features
 
 ### 1. Customer Storefront
-- **Home & Hero:** Dynamic hero section, category showcases, bestsellers, trust badges, and gym facilities tour.
-- **Product Catalog:** Categories (Native Whey, Creatine, Mass Gainers, Electrolytes, Recovery), faceted filters, and sorting.
-- **Product Details:** High-resolution product images, variant selectors (size/weight/flavour), nutritional composition, amino acid tables, usage guides, and third-party Certificate of Analysis (COA).
-- **Cart & Checkout:** Real-time subtotal calculations, pin-code delivery validation, coupon engine (`YODHA15`), and Razorpay checkout flow with COD toggles.
-- **Order Tracking:** Real-time consignment timeline synced with Shiprocket AWB statuses (Order placed → Packaged → Picked up → In Transit → Delivered).
-- **Gym Memberships:** Dedicated membership plans (Monthly, Quarterly, Half-Yearly, Annual, and 1-on-1 Personal Training) with instant digital pass issuance.
-- **Customer Account:** View profile, saved addresses, complete order history, and active **Digital Gym Membership Pass** with validity periods.
+- **Home & Hero:** Gym hero section, category showcases, products, and gym overview.
+- **Product Catalog:** Categories, product search, filters, and sorting (sample placeholder products in current build).
+- **Product Details:** Product images, variant selectors (size/weight/flavour), nutritional facts, and stock status.
+- **Cart & Checkout:** Real-time subtotal calculations, pin-code delivery lookup, coupon engine, and checkout flow with COD toggles.
+- **Order Tracking:** Real-time order progress synced with courier tracking (mock data in current build).
+- **Gym Memberships:** Membership plans (Monthly, Quarterly, Half-Yearly, Annual, and 1-on-1 Personal Training; pricing to be confirmed with the gym).
+- **Customer Account:** View profile, saved addresses, order history, and digital gym membership status.
 
 ### 2. Operations & Admin Console (`/admin`)
-- **Dashboard:** GMV velocity, order intake, repeat purchase index, and low-stock alerts.
-- **Product Management:** Catalog inventory with variant management, batch codes, expiry dates, and pricing.
-- **Inventory Tracking:** Real-time stock counts, reorder thresholds, and warehouse dispatch logging.
+- **Dashboard:** Revenue, order intake, retention index, and low-stock alerts (sample metrics in current build).
+- **Product Management:** Catalog inventory with variant management, batch codes, and pricing.
+- **Inventory Tracking:** Stock counts, reorder thresholds, and store inventory management.
 - **Order Fulfillment:** Filter by status, generate shipping labels, track courier pickups, and verify COD collection.
-- **Memberships Hub:** Full active member list, upcoming expiry alerts, revenue ledger, and front-desk walk-in registration modal.
+- **Memberships Hub:** Active member list, upcoming expiry alerts, and front-desk walk-in registration modal.
 - **Coupons & Promotions:** Create percentage, fixed, or free-shipping discount codes.
-- **Reports & Analytics:** Daily revenue velocity, category share, and product rankings.
+- **Reports & Analytics:** Revenue overview, category share, and product rankings.
 
 ---
 

@@ -78,26 +78,28 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Content Info */}
         <div className="p-5">
-          {/* Star Rating */}
-          <div className="flex items-center gap-1.5 text-[#C59B27] mb-1.5">
-            <div className="flex items-center">
-              {[...Array(5)].map((_, i) => (
-                <span
-                  key={i}
-                  className="material-symbols-outlined text-[15px]"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  star
-                </span>
-              ))}
+          {/* Star Rating — only show if real reviews exist */}
+          {product.reviewCount > 0 && (
+            <div className="flex items-center gap-1.5 text-[#C59B27] mb-1.5">
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <span
+                    key={i}
+                    className="material-symbols-outlined text-[15px]"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
+                    star
+                  </span>
+                ))}
+              </div>
+              <span className="font-label-sm text-label-sm font-semibold text-on-surface">
+                {product.rating}
+              </span>
+              <span className="font-label-sm text-label-sm text-outline">
+                ({product.reviewCount} reviews)
+              </span>
             </div>
-            <span className="font-label-sm text-label-sm font-semibold text-on-surface">
-              4.9
-            </span>
-            <span className="font-label-sm text-label-sm text-outline">
-              ({product.variants.length > 1 ? "420+" : "180+"} reviews)
-            </span>
-          </div>
+          )}
 
           {/* Title & Subtitle */}
           <Link href={`/product/${product.slug}`}>
@@ -145,10 +147,12 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
 
           {/* Inventory Badge */}
-          <div className="mt-2.5 flex items-center gap-1.5 text-secondary font-label-sm text-label-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-            <span>In Stock • Ready to dispatch in 24 hrs</span>
-          </div>
+          {selectedVariant.stock > 0 && (
+            <div className="mt-2.5 flex items-center gap-1.5 text-secondary font-label-sm text-label-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+              <span>In Stock</span>
+            </div>
+          )}
         </div>
       </div>
 

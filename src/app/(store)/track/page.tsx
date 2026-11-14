@@ -78,7 +78,7 @@ function TrackContent() {
 
           <div className="sm:col-span-5">
             <label className="block text-xs uppercase tracking-wider font-semibold text-on-surface-variant mb-1">
-              Registered Athlete Mobile
+              Registered Phone Number
             </label>
             <input
               type="tel"
@@ -110,10 +110,10 @@ function TrackContent() {
               <div className="flex items-center justify-between border-b border-outline-variant/60 pb-4">
                 <div>
                   <span className="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">
-                    AIR PRIORITY CONSIGNMENT
+                    ORDER SHIPMENT
                   </span>
                   <h2 className="font-title-md text-title-md font-bold uppercase text-primary mt-0.5">
-                    Dispatch Progress Timeline
+                    Shipping Progress
                   </h2>
                 </div>
                 <span className="px-2.5 py-1 bg-secondary/15 text-secondary text-xs uppercase font-bold">
@@ -159,35 +159,31 @@ function TrackContent() {
               </div>
             </div>
 
-            {/* Right: Courier Telemetry & Consignment Card (5 cols) */}
+            {/* Right: Courier Details & Consignment Card (5 cols) */}
             <div className="lg:col-span-5 space-y-6 sticky top-[140px]">
-              {/* Telemetry Card */}
+              {/* Shipment Details Card */}
               <div className="bg-surface-container-lowest p-6 border border-outline-variant space-y-4">
                 <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold block border-b border-outline-variant/60 pb-2">
-                  Carrier Telemetry &amp; Metadata
+                  Shipment Details
                 </span>
 
                 <div className="space-y-3 font-mono text-sm">
                   <div className="flex justify-between">
                     <span className="text-outline">CARRIER:</span>
                     <span className="font-bold text-primary">
-                      {searchedOrder.courier || "Blue Dart Apex Air Priority"}
+                      {searchedOrder.courier || "Courier Partner"}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-outline">AWB NUMBER:</span>
                     <span className="font-bold text-secondary">
-                      {searchedOrder.awb || "BDA2409876541"}
+                      {searchedOrder.awb || "AWB123456789"}
                     </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-outline">COLD CHAIN SENSOR:</span>
-                    <span className="text-secondary font-bold">5.4°C (Verified Safe)</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-outline">ESTIMATED ARRIVAL:</span>
                     <span className="font-bold text-primary">
-                      {searchedOrder.estimatedDelivery || "Tomorrow, 2:00 PM"}
+                      {searchedOrder.estimatedDelivery || "Standard delivery"}
                     </span>
                   </div>
                   <div className="flex justify-between">
@@ -245,7 +241,7 @@ function TrackContent() {
 
 export default function TrackOrderPage() {
   return (
-    <Suspense fallback={<div className="p-16 text-center text-outline">Loading order telemetry...</div>}>
+    <Suspense fallback={<div className="p-16 text-center text-outline">Loading order tracking...</div>}>
       <TrackContent />
     </Suspense>
   );

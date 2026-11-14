@@ -12,9 +12,9 @@ export default function MembershipsPage() {
   const [selectedPlan, setSelectedPlan] = useState<MembershipPlan | null>(null);
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
   const [generatedMemberId, setGeneratedMemberId] = useState("");
-  const [buyerName, setBuyerName] = useState(user?.fullName || "Vikram Malhotra");
-  const [buyerPhone, setBuyerPhone] = useState(user?.phone || "+91 87987 03787");
-  const [buyerEmail, setBuyerEmail] = useState(user?.email || "user@yodhafitnesszone.in");
+  const [buyerName, setBuyerName] = useState(user?.fullName || "");
+  const [buyerPhone, setBuyerPhone] = useState(user?.phone || "");
+  const [buyerEmail, setBuyerEmail] = useState(user?.email || "");
   const [paymentOption, setPaymentOption] = useState<"upi" | "card" | "pay_at_gym">("upi");
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -160,20 +160,19 @@ export default function MembershipsPage() {
               Personal Training &amp; Transformation
             </h3>
             <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
-              Prefer direct 1-on-1 guidance? Our certified trainers work with you every session on form, progressive overload, and tailored nutrition for your physique and health goals.
+              Prefer direct 1-on-1 guidance? Our trainers work with you on form, routine, and nutrition for your fitness goals.
             </p>
             <div className="flex flex-wrap gap-4 pt-2 text-xs font-mono text-on-surface">
-              <div>✓ DEDICATED TRAINER</div>
-              <div>✓ WEEKLY DIET AUDITS</div>
+              <div>✓ DEDICATED COACH</div>
+              <div>✓ DIET GUIDANCE</div>
               <div>✓ FORM CORRECTION</div>
-              <div>✓ PROGRESS TRACKING</div>
             </div>
           </div>
 
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between gap-4">
             <div>
               <span className="text-xs text-outline uppercase block">FROM</span>
-              <span className="font-mono text-3xl font-bold text-primary">₹4,500</span>
+              <span className="font-mono text-3xl font-bold text-primary">₹0</span>
               <span className="text-xs text-on-surface-variant"> / month</span>
             </div>
             <button
@@ -196,7 +195,7 @@ export default function MembershipsPage() {
             <span className="material-symbols-outlined text-secondary text-[26px]">schedule</span>
             <h4 className="font-title-md text-title-md font-semibold text-primary uppercase">Gym Timings</h4>
             <p className="text-xs text-on-surface-variant leading-relaxed">
-              Mon–Wed &amp; Fri–Sun: 5:30 AM – 10:30 PM. Thursdays closed for deep facility sanitization and equipment maintenance.
+              5:30 AM – 10:30 PM, Thursday CLOSED.
             </p>
           </div>
 

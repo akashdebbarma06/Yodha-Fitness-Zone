@@ -23,23 +23,21 @@ export default function CheckoutPage() {
   } = useCart();
 
   // Contact & Address Form
-  const [email, setEmail] = useState("arjun.sharma@example.com");
-  const [phone, setPhone] = useState("+91 98765 43210");
-  const [firstName, setFirstName] = useState("Arjun");
-  const [lastName, setLastName] = useState("Sharma");
-  const [addressLine, setAddressLine] = useState(
-    "Flat 402, Oakwood Sanctuary, 12th Main Road, HAL 2nd Stage"
-  );
-  const [landmark, setLandmark] = useState("Near 100 Feet Road Junction");
-  const [pinCode, setPinCode] = useState("560038");
-  const [city, setCity] = useState("Bengaluru");
-  const [state, setState] = useState("Karnataka");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [addressLine, setAddressLine] = useState("");
+  const [landmark, setLandmark] = useState("");
+  const [pinCode, setPinCode] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
   const [gstin, setGstin] = useState("");
   const [whatsappAlerts, setWhatsappAlerts] = useState(true);
 
   // Payment Selection
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethodType>("upi");
-  const [upiVpa, setUpiVpa] = useState("arjun@okhdfcbank");
+  const [upiVpa, setUpiVpa] = useState("");
 
   // State
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,15 +50,6 @@ export default function CheckoutPage() {
     if (cleaned.length === 6 && PIN_CODE_MAP[cleaned]) {
       setCity(PIN_CODE_MAP[cleaned].city);
       setState(PIN_CODE_MAP[cleaned].state);
-    } else if (cleaned.startsWith("560")) {
-      setCity("Bengaluru");
-      setState("Karnataka");
-    } else if (cleaned.startsWith("400")) {
-      setCity("Mumbai");
-      setState("Maharashtra");
-    } else if (cleaned.startsWith("110")) {
-      setCity("New Delhi");
-      setState("Delhi");
     }
   };
 
@@ -69,7 +58,7 @@ export default function CheckoutPage() {
     setIsSubmitting(true);
 
     setTimeout(() => {
-      const generatedOrderId = `#KR-${Math.floor(10000 + Math.random() * 90000)}`;
+      const generatedOrderId = `#YFZ-${Math.floor(10000 + Math.random() * 90000)}`;
       setOrderConfirmed(generatedOrderId);
       setIsSubmitting(false);
       clearCart();
@@ -94,7 +83,7 @@ export default function CheckoutPage() {
               Order Confirmed
             </h1>
             <p className="font-body-md text-body-md text-on-surface-variant mt-2">
-              Thank you, {firstName}. Your order has been placed and will be shipped via express delivery.
+              Thank you{firstName ? `, ${firstName}` : ""}. Your order has been placed and will be shipped with tracking.
             </p>
           </div>
 
@@ -109,15 +98,15 @@ export default function CheckoutPage() {
             </div>
             <div className="flex justify-between">
               <span className="text-outline">ESTIMATED DELIVERY:</span>
-              <span className="font-bold text-primary">24–48 Hours</span>
+              <span className="font-bold text-primary">Standard delivery with tracking</span>
             </div>
             <div className="flex justify-between">
               <span className="text-outline">DISPATCH:</span>
-              <span>Bengaluru</span>
+              <span>Charilam, Tripura</span>
             </div>
             <div className="flex justify-between">
               <span className="text-outline">DESTINATION:</span>
-              <span>{city}, {state} ({pinCode})</span>
+              <span>{city || "India"}{state ? `, ${state}` : ""}{pinCode ? ` (${pinCode})` : ""}</span>
             </div>
           </div>
 
@@ -198,7 +187,7 @@ export default function CheckoutPage() {
                     bolt
                   </span>
                   <h2 className="font-title-md text-title-md uppercase font-bold text-primary">
-                    Express 1-Click UPI Checkout
+                    UPI Checkout
                   </h2>
                 </div>
                 <span className="font-label-sm text-label-sm uppercase px-2 py-0.5 bg-secondary/15 text-secondary font-bold">
@@ -210,7 +199,7 @@ export default function CheckoutPage() {
                 onClick={() => setPaymentMethod("upi")}
                 className="w-full h-12 bg-primary hover:bg-neutral-800 text-on-primary font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center justify-center gap-3 transition-colors shadow-sm"
               >
-                <span>Instant Checkout via UPI / GPay / PhonePe</span>
+                <span>Pay via UPI / GPay / PhonePe</span>
                 <span className="material-symbols-outlined text-[18px]">
                   arrow_forward
                 </span>
@@ -224,7 +213,7 @@ export default function CheckoutPage() {
                   01
                 </span>
                 <h2 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary">
-                  Athlete Contact Information
+                  Contact Information
                 </h2>
               </div>
 
@@ -380,7 +369,7 @@ export default function CheckoutPage() {
                   type="text"
                   value={gstin}
                   onChange={(e) => setGstin(e.target.value.toUpperCase())}
-                  placeholder="29AABCK8921M1Z5"
+                  placeholder="GSTIN (optional)"
                   className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-mono focus:outline-none focus:border-primary"
                 />
               </div>
@@ -431,11 +420,11 @@ export default function CheckoutPage() {
                         type="text"
                         value={upiVpa}
                         onChange={(e) => setUpiVpa(e.target.value)}
-                        placeholder="athlete@upi"
+                        placeholder="yourname@upi"
                         className="flex-1 h-10 px-3 bg-surface border border-outline-variant font-mono text-sm focus:outline-none focus:border-primary"
                       />
                       <span className="text-xs text-outline font-semibold uppercase">
-                        VPA / QR Verified
+                        UPI ID
                       </span>
                     </div>
                   )}
@@ -463,7 +452,7 @@ export default function CheckoutPage() {
                     </span>
                   </div>
                   <span className="text-xs text-outline font-mono">
-                    RBI Compliant Tokenization
+                    Secure Payment
                   </span>
                 </label>
 
@@ -485,10 +474,10 @@ export default function CheckoutPage() {
                       className="w-4 h-4 accent-primary"
                     />
                     <span className="font-title-md text-title-md font-semibold text-primary">
-                      NetBanking (58 Indian Scheduled Banks)
+                      NetBanking
                     </span>
                   </div>
-                  <span className="text-xs text-outline">HDFC / ICICI / SBI</span>
+                  <span className="text-xs text-outline">HDFC / ICICI / SBI &amp; more</span>
                 </label>
 
                 {/* Cash on Delivery */}
@@ -509,7 +498,7 @@ export default function CheckoutPage() {
                       className="w-4 h-4 accent-primary"
                     />
                     <span className="font-title-md text-title-md font-semibold text-primary">
-                      Cash on Delivery (OTP Verified at Doorstep)
+                      Cash on Delivery
                     </span>
                   </div>
                   <span className="text-xs text-secondary font-semibold">Available</span>
@@ -623,16 +612,9 @@ export default function CheckoutPage() {
               <span>•</span>
               <span className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-[13px]">
-                  ac_unit
+                  lock
                 </span>
-                Sub-8°C Logistics
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[13px]">
-                  verified
-                </span>
-                100% Authentic
+                256-Bit SSL Encrypted
               </span>
             </div>
           </div>

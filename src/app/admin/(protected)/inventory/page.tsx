@@ -72,10 +72,10 @@ export default function AdminInventoryPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-6">
         <div>
           <h1 className="font-headline-md text-headline-md font-semibold uppercase tracking-tight text-primary">
-            Warehouse Inventory &amp; Batch Telemetry
+            Inventory
           </h1>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-            Real-time stock yields across Bengaluru Central and Mumbai Hubs with automated reorder triggers.
+            Charilam store stock.
           </p>
         </div>
 
@@ -99,7 +99,7 @@ export default function AdminInventoryPage() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search SKU, batch, formulation..."
+            placeholder="Search SKU, product..."
             className="w-full h-10 pl-9 pr-3 bg-surface border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary"
           />
           <span className="material-symbols-outlined text-[18px] absolute left-2.5 top-1/2 -translate-y-1/2 text-outline">
@@ -127,7 +127,7 @@ export default function AdminInventoryPage() {
         <table className="w-full text-left font-body-sm text-body-sm">
           <thead className="bg-surface-container-low font-label-sm text-label-sm uppercase tracking-wider text-outline border-b border-outline-variant">
             <tr>
-              <th className="p-4">SKU / Formulation</th>
+              <th className="p-4">SKU / Product</th>
               <th className="p-4">Variant</th>
               <th className="p-4">Batch #</th>
               <th className="p-4">Expiry Date</th>

@@ -11,80 +11,21 @@ import { INITIAL_MEMBERSHIPS } from "@/lib/data/memberships";
 type AccountTab = "dashboard" | "membership" | "orders" | "wishlist" | "addresses" | "profile";
 
 /* ──────────────────────────────────────────────
-   Sample Wishlist Formulations
+   Wishlist Items
    ────────────────────────────────────────────── */
-const INITIAL_WISHLIST = [
-  {
-    id: "prod-001",
-    variantId: "var-001a",
-    name: "Cold-Filtered Native Whey Isolate",
-    subtitle: "Madagascar Vanilla Bean • 1 KG",
-    category: "Native Whey",
-    price: 3499,
-    originalPrice: 3999,
-    rating: 4.9,
-    reviews: 248,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBMrVEnASILElR4hZ9mcGWtZG6Ey8DlnSQPxu8p_EqfDfwamv-CDnwt3Wb3bNwVL8mNNmHavFDlfMNksqtzWywExUaHeZGT8oH027GfQIi76-7peuhFQgmg4gGmykxNleEKn8k0hHPhmmKpk5C2KkWi01OFsbwG0aA5wqdjfTErIlHTip2gO6oggQgW95_zE04B66kWqzI_6jljXgLYJPLdumburO8xptfZXyVWLq-S",
-    inStock: true,
-  },
-  {
-    id: "prod-003",
-    variantId: "var-003a",
-    name: "Ultra-Pure Micronized Creatine",
-    subtitle: "Pure Raw Unflavored • 500g (200 Mesh Creapure®)",
-    category: "Cellular ATP",
-    price: 1299,
-    originalPrice: 1499,
-    rating: 5.0,
-    reviews: 412,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDJd1ts64Gg57cxposALffxqiPfpKFiRdwHktNe_IGdKBmOQm101wdspdatsCAjENeobvD0kkixVqvXxSc-PZVCk-ixjQTImpPTtXgbW1HSpZ9Kg1VlI-Hit_SMkF1SItME_Tk3xG5rFJwDY4FiAzWuaau1NOF-NOn3js2Fynhfvt9n5j_B3aAvL56LTfsEw3aLCzf1xfXqZJGDM71c96HGEal67Ff3W3HaQfREn-rr",
-    inStock: true,
-  },
-  {
-    id: "prod-004",
-    variantId: "var-004a",
-    name: "Bio-Chelated Marine Collagen Peptides",
-    subtitle: "Type I & III Wild-Caught • Unflavored 300g",
-    category: "Joint & Connective",
-    price: 2799,
-    originalPrice: 3199,
-    rating: 4.8,
-    reviews: 134,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBMrVEnASILElR4hZ9mcGWtZG6Ey8DlnSQPxu8p_EqfDfwamv-CDnwt3Wb3bNwVL8mNNmHavFDlfMNksqtzWywExUaHeZGT8oH027GfQIi76-7peuhFQgmg4gGmykxNleEKn8k0hHPhmmKpk5C2KkWi01OFsbwG0aA5wqdjfTErIlHTip2gO6oggQgW95_zE04B66kWqzI_6jljXgLYJPLdumburO8xptfZXyVWLq-S",
-    inStock: true,
-  },
-  {
-    id: "prod-005",
-    variantId: "var-005a",
-    name: "Double-Wall Insulated Steel Shaker",
-    subtitle: "Matte Charcoal • 750ml Surgical 316 Stainless",
-    category: "Hardware",
-    price: 1499,
-    originalPrice: 1799,
-    rating: 4.9,
-    reviews: 89,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDJd1ts64Gg57cxposALffxqiPfpKFiRdwHktNe_IGdKBmOQm101wdspdatsCAjENeobvD0kkixVqvXxSc-PZVCk-ixjQTImpPTtXgbW1HSpZ9Kg1VlI-Hit_SMkF1SItME_Tk3xG5rFJwDY4FiAzWuaau1NOF-NOn3js2Fynhfvt9n5j_B3aAvL56LTfsEw3aLCzf1xfXqZJGDM71c96HGEal67Ff3W3HaQfREn-rr",
-    inStock: true,
-  },
-  {
-    id: "prod-006",
-    variantId: "var-006a",
-    name: "Pure Himalayan Shilajit Gold Resin",
-    subtitle: "84+ Ionic Minerals • 20g 75% Fulvic Acid",
-    category: "Vitality Matrix",
-    price: 2199,
-    originalPrice: 2499,
-    rating: 5.0,
-    reviews: 176,
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBMrVEnASILElR4hZ9mcGWtZG6Ey8DlnSQPxu8p_EqfDfwamv-CDnwt3Wb3bNwVL8mNNmHavFDlfMNksqtzWywExUaHeZGT8oH027GfQIi76-7peuhFQgmg4gGmykxNleEKn8k0hHPhmmKpk5C2KkWi01OFsbwG0aA5wqdjfTErIlHTip2gO6oggQgW95_zE04B66kWqzI_6jljXgLYJPLdumburO8xptfZXyVWLq-S",
-    inStock: true,
-  },
-];
+const INITIAL_WISHLIST: {
+  id: string;
+  variantId: string;
+  name: string;
+  subtitle: string;
+  category: string;
+  price: number;
+  originalPrice?: number;
+  rating: number;
+  reviews: number;
+  image: string;
+  inStock: boolean;
+}[] = [];
 
 /* ──────────────────────────────────────────────
    Sample Addresses
@@ -92,25 +33,14 @@ const INITIAL_WISHLIST = [
 const INITIAL_ADDRESSES = [
   {
     id: "addr-01",
-    tag: "Home Coordinates",
-    fullName: "Vikram Malhotra",
-    phone: "+91 98765 43210",
-    street: "Flat 402, Oakwood Sanctuary, 12th Main Road, HAL 2nd Stage",
-    city: "Indiranagar, Bengaluru",
-    state: "Karnataka",
-    pinCode: "560038",
-    isDefault: true,
-  },
-  {
-    id: "addr-02",
-    tag: "Training Sanctuary",
-    fullName: "Vikram Malhotra",
-    phone: "+91 98765 43210",
-    street: "Yodha Fitness Zone, NH08 near Tripura Gramin Bank, Charilam",
+    tag: "Home",
+    fullName: "[PLACEHOLDER — ask the gym] Demo Member",
+    phone: "+91 87987 03787",
+    street: "NH08 near Tripura Gramin Bank",
     city: "Charilam",
     state: "Tripura",
     pinCode: "799103",
-    isDefault: false,
+    isDefault: true,
   },
 ];
 
@@ -124,21 +54,21 @@ export default function AccountPage() {
   const [orderFilter, setOrderFilter] = useState<"all" | "in_transit" | "delivered">("all");
 
   // Profile Form State
-  const [profileName, setProfileName] = useState(user?.fullName || "Vikram Malhotra");
-  const [profileEmail, setProfileEmail] = useState(user?.email || "user@yodhafitnesszone.in");
-  const [discipline, setDiscipline] = useState("Hypertrophy & Strength");
+  const [profileName, setProfileName] = useState(user?.fullName || "[PLACEHOLDER — ask the gym] Demo Member");
+  const [profileEmail, setProfileEmail] = useState(user?.email || "member@example.com");
+  const [discipline, setDiscipline] = useState("Weight Training & Cardio");
   const [profileSaved, setProfileSaved] = useState(false);
 
   // Address Modal State
   const [showAddressModal, setShowAddressModal] = useState(false);
   const [newAddress, setNewAddress] = useState({
-    tag: "Alternative Node",
-    fullName: user?.fullName || "Vikram Malhotra",
-    phone: user?.phone || "+91 98765 43210",
+    tag: "Home",
+    fullName: user?.fullName || "[PLACEHOLDER — ask the gym] Demo Member",
+    phone: user?.phone || "+91 87987 03787",
     street: "",
-    city: "Bengaluru",
-    state: "Karnataka",
-    pinCode: "",
+    city: "Charilam",
+    state: "Tripura",
+    pinCode: "799103",
   });
 
   // Newsletter State
@@ -146,9 +76,9 @@ export default function AccountPage() {
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
 
   // Fallback customer greeting
-  const displayName = user?.fullName || "Vikram";
-  const firstName = displayName.split(" ")[0] || "Sarah";
-  const displayPhone = user?.phone || "+91 98765 43210";
+  const displayName = user?.fullName || "Member";
+  const firstName = displayName.split(" ")[0] || "Member";
+  const displayPhone = user?.phone || "+91 87987 03787";
 
   // Filtered orders
   const filteredOrders = ORDERS.filter((order) => {
@@ -175,13 +105,13 @@ export default function AccountPage() {
     setAddresses([...addresses, added]);
     setShowAddressModal(false);
     setNewAddress({
-      tag: "Alternative Node",
+      tag: "Home",
       fullName: displayName,
       phone: displayPhone,
       street: "",
-      city: "Bengaluru",
-      state: "Karnataka",
-      pinCode: "",
+      city: "Charilam",
+      state: "Tripura",
+      pinCode: "799103",
     });
   };
 
@@ -596,127 +526,72 @@ export default function AccountPage() {
                     </button>
                   </div>
 
-                  {/* Order List: Exact visual match to attachment */}
+                  {/* Order List */}
                   <div className="divide-y divide-neutral-100">
-                    {/* Order Row 1 */}
-                    <div className="py-4 first:pt-0 last:pb-0 flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        {/* Rounded Product Thumbnail */}
-                        <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-[#FAF9F5] border border-neutral-100 p-1 flex items-center justify-center shrink-0 overflow-hidden">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMrVEnASILElR4hZ9mcGWtZG6Ey8DlnSQPxu8p_EqfDfwamv-CDnwt3Wb3bNwVL8mNNmHavFDlfMNksqtzWywExUaHeZGT8oH027GfQIi76-7peuhFQgmg4gGmykxNleEKn8k0hHPhmmKpk5C2KkWi01OFsbwG0aA5wqdjfTErIlHTip2gO6oggQgW95_zE04B66kWqzI_6jljXgLYJPLdumburO8xptfZXyVWLq-S"
-                            alt="Whey Isolate"
-                            className="w-full h-full object-contain"
-                          />
+                    {ORDERS.slice(0, 3).map((order) => (
+                      <div
+                        key={order.id}
+                        className="py-4 first:pt-0 last:pb-0 flex items-center justify-between gap-4"
+                      >
+                        <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                          <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-[#FAF9F5] border border-neutral-100 p-1 flex items-center justify-center shrink-0 overflow-hidden">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={order.items[0]?.image || "/images/placeholder-gym.jpg"}
+                              alt={order.items[0]?.name || "Order item"}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <Link
+                              href={`/track?id=${encodeURIComponent(order.id)}`}
+                              className="font-medium text-sm sm:text-[15px] text-[#1F1E1C] hover:text-neutral-600 transition-colors block truncate"
+                            >
+                              {order.id}
+                            </Link>
+                            <p className="text-xs text-neutral-400 mt-0.5">
+                              {new Date(order.createdAt).toLocaleDateString("en-IN", {
+                                month: "short",
+                                day: "numeric",
+                                year: "numeric",
+                              })}{" "}
+                              • {order.items.length} {order.items.length === 1 ? "item" : "items"}
+                            </p>
+                          </div>
                         </div>
-                        <div className="min-w-0">
-                          <Link
-                            href="/track?id=LS-2024-1234"
-                            className="font-medium text-sm sm:text-[15px] text-[#1F1E1C] hover:text-neutral-600 transition-colors block truncate"
+
+                        <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+                          <span
+                            className={`px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium ${
+                              order.orderStatus === "delivered"
+                                ? "bg-[#EDF7ED] text-[#2E7D32]"
+                                : order.orderStatus === "in_transit"
+                                ? "bg-[#EDF4FB] text-[#1E70BF]"
+                                : "bg-neutral-100 text-neutral-600"
+                            }`}
                           >
-                            #LS-2024-1234
-                          </Link>
-                          <p className="text-xs text-neutral-400 mt-0.5">
-                            Feb 15, 2024 • 2 items
-                          </p>
+                            {order.orderStatus.replace("_", " ")}
+                          </span>
+                          <span className="font-semibold text-sm sm:text-base text-[#1F1E1C] min-w-[70px] text-right">
+                            {formatINR(order.total)}
+                          </span>
                         </div>
                       </div>
-
-                      <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-                        {/* Status Badge */}
-                        <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-[#EDF7ED] text-[#2E7D32]">
-                          Delivered
-                        </span>
-                        {/* Price */}
-                        <span className="font-semibold text-sm sm:text-base text-[#1F1E1C] min-w-[70px] text-right">
-                          $89.00
-                        </span>
+                    ))}
+                    {ORDERS.length === 0 && (
+                      <div className="py-8 text-center text-xs text-neutral-400">
+                        No orders yet.
                       </div>
-                    </div>
-
-                    {/* Order Row 2 */}
-                    <div className="py-4 first:pt-0 last:pb-0 flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        {/* Rounded Product Thumbnail */}
-                        <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-[#FAF9F5] border border-neutral-100 p-1 flex items-center justify-center shrink-0 overflow-hidden">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJd1ts64Gg57cxposALffxqiPfpKFiRdwHktNe_IGdKBmOQm101wdspdatsCAjENeobvD0kkixVqvXxSc-PZVCk-ixjQTImpPTtXgbW1HSpZ9Kg1VlI-Hit_SMkF1SItME_Tk3xG5rFJwDY4FiAzWuaau1NOF-NOn3js2Fynhfvt9n5j_B3aAvL56LTfsEw3aLCzf1xfXqZJGDM71c96HGEal67Ff3W3HaQfREn-rr"
-                            alt="Micronized Creatine"
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                        <div className="min-w-0">
-                          <Link
-                            href="/track?id=LS-2024-1198"
-                            className="font-medium text-sm sm:text-[15px] text-[#1F1E1C] hover:text-neutral-600 transition-colors block truncate"
-                          >
-                            #LS-2024-1198
-                          </Link>
-                          <p className="text-xs text-neutral-400 mt-0.5">
-                            Feb 02, 2024 • 1 item
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-                        {/* Status Badge */}
-                        <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-[#EDF4FB] text-[#1E70BF]">
-                          In Transit
-                        </span>
-                        {/* Price */}
-                        <span className="font-semibold text-sm sm:text-base text-[#1F1E1C] min-w-[70px] text-right">
-                          $45.00
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Order Row 3 */}
-                    <div className="py-4 first:pt-0 last:pb-0 flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                        {/* Rounded Product Thumbnail */}
-                        <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-[#FAF9F5] border border-neutral-100 p-1 flex items-center justify-center shrink-0 overflow-hidden">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMrVEnASILElR4hZ9mcGWtZG6Ey8DlnSQPxu8p_EqfDfwamv-CDnwt3Wb3bNwVL8mNNmHavFDlfMNksqtzWywExUaHeZGT8oH027GfQIi76-7peuhFQgmg4gGmykxNleEKn8k0hHPhmmKpk5C2KkWi01OFsbwG0aA5wqdjfTErIlHTip2gO6oggQgW95_zE04B66kWqzI_6jljXgLYJPLdumburO8xptfZXyVWLq-S"
-                            alt="Recovery Matrix"
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                        <div className="min-w-0">
-                          <Link
-                            href="/track?id=LS-2024-1082"
-                            className="font-medium text-sm sm:text-[15px] text-[#1F1E1C] hover:text-neutral-600 transition-colors block truncate"
-                          >
-                            #LS-2024-1082
-                          </Link>
-                          <p className="text-xs text-neutral-400 mt-0.5">
-                            Jan 18, 2024 • 3 items
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-                        {/* Status Badge */}
-                        <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium bg-[#EDF7ED] text-[#2E7D32]">
-                          Delivered
-                        </span>
-                        {/* Price */}
-                        <span className="font-semibold text-sm sm:text-base text-[#1F1E1C] min-w-[70px] text-right">
-                          $112.00
-                        </span>
-                      </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* Secondary Account Summary Card */}
                   <div className="pt-6 border-t border-neutral-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Default Dispatch Address Preview */}
+                    {/* Default Delivery Address Preview */}
                     <div className="p-4 rounded-xl bg-[#FAF9F5] border border-[#EBE7DF] space-y-2">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-medium uppercase tracking-wider text-neutral-500">
-                          Primary Dispatch Node
+                          Delivery Address
                         </span>
                         <button
                           type="button"
@@ -730,7 +605,7 @@ export default function AccountPage() {
                         {displayName}
                       </p>
                       <p className="text-xs text-neutral-500 leading-relaxed">
-                        Flat 402, Oakwood Sanctuary, 12th Main Road, HAL 2nd Stage, Indiranagar, Bengaluru — 560038
+                        NH08 near Tripura Gramin Bank, Charilam, Tripura — 799103
                       </p>
                     </div>
 
@@ -864,7 +739,7 @@ export default function AccountPage() {
                         Order History &amp; Consignments
                       </h2>
                       <p className="text-xs text-neutral-500 mt-1">
-                        Review past dispatches, track cold-chain shipments, and download tax invoices.
+                        Review past orders, track shipments, and download tax invoices.
                       </p>
                     </div>
 
@@ -980,7 +855,7 @@ export default function AccountPage() {
               )}
 
               {/* ──────────────────────────────────────────────
-                  TAB 3: WISHLIST (Saved Formulations)
+                  TAB 3: WISHLIST (Saved Items)
                   ────────────────────────────────────────────── */}
               {activeTab === "wishlist" && (
                 <div className="space-y-6">
@@ -990,7 +865,7 @@ export default function AccountPage() {
                         Wishlist Items ({wishlist.length})
                       </h2>
                       <p className="text-xs text-neutral-500 mt-1">
-                        Formulations and hardware flagged for replenishment or next athletic cycle.
+                        Items saved for your next order.
                       </p>
                     </div>
                   </div>
@@ -1049,9 +924,11 @@ export default function AccountPage() {
                               <span className="font-semibold text-sm text-[#1F1E1C]">
                                 {formatINR(item.price)}
                               </span>
-                              <span className="text-xs text-neutral-400 line-through">
-                                {formatINR(item.originalPrice)}
-                              </span>
+                              {item.originalPrice ? (
+                                <span className="text-xs text-neutral-400 line-through">
+                                  {formatINR(item.originalPrice)}
+                                </span>
+                              ) : null}
                             </div>
                           </div>
 
@@ -1083,17 +960,17 @@ export default function AccountPage() {
               )}
 
               {/* ──────────────────────────────────────────────
-                  TAB 4: ADDRESSES (Saved Delivery Coordinates)
+                  TAB 4: ADDRESSES (Saved Addresses)
                   ────────────────────────────────────────────── */}
               {activeTab === "addresses" && (
                 <div className="space-y-6">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b border-neutral-100">
                     <div>
                       <h2 className="font-serif text-xl sm:text-2xl font-normal text-[#1F1E1C]">
-                        Saved Delivery Coordinates
+                        Saved Delivery Addresses
                       </h2>
                       <p className="text-xs text-neutral-500 mt-1">
-                        Registered residential and athletic sanctuary dispatch nodes for cold-chain couriers.
+                        Manage your delivery addresses for orders.
                       </p>
                     </div>
 
@@ -1169,7 +1046,7 @@ export default function AccountPage() {
                       <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-neutral-200 space-y-4">
                         <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
                           <h3 className="font-serif text-lg font-medium text-[#1F1E1C]">
-                            Add Dispatch Node
+                            Add Address
                           </h3>
                           <button
                             type="button"
@@ -1183,7 +1060,7 @@ export default function AccountPage() {
                         <form onSubmit={handleAddAddress} className="space-y-3 text-xs">
                           <div>
                             <label className="block text-neutral-500 font-medium mb-1">
-                              Node Label (e.g. Gym, Office, Vacation)
+                              Address Label (e.g. Home, Work)
                             </label>
                             <input
                               type="text"
@@ -1282,7 +1159,7 @@ export default function AccountPage() {
               )}
 
               {/* ──────────────────────────────────────────────
-                  TAB 5: PROFILE (Athlete Credentials & Preferences)
+                  TAB 5: PROFILE (Member Profile & Preferences)
                   ────────────────────────────────────────────── */}
               {activeTab === "profile" && (
                 <div className="space-y-6">
@@ -1291,7 +1168,7 @@ export default function AccountPage() {
                       Profile &amp; Preferences
                     </h2>
                     <p className="text-xs text-neutral-500 mt-1">
-                      Manage verified athlete credentials, session security, and nutrition preferences.
+                      Manage your profile, account security, and preferences.
                     </p>
                   </div>
 
@@ -1334,7 +1211,7 @@ export default function AccountPage() {
                     {/* Email */}
                     <div>
                       <label className="block text-xs font-medium text-neutral-500 mb-1.5 uppercase tracking-wider">
-                        Email Address (for Invoices &amp; COA Reports)
+                        Email Address (for Invoices &amp; Order Updates)
                       </label>
                       <input
                         type="email"
@@ -1378,7 +1255,7 @@ export default function AccountPage() {
                           defaultChecked
                           className="w-4 h-4 accent-[#262422]"
                         />
-                        <span>WhatsApp cold-chain dispatch and temperature milestone alerts</span>
+                        <span>WhatsApp order dispatch and delivery alerts</span>
                       </label>
                     </div>
 

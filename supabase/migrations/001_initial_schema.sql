@@ -1,5 +1,5 @@
 -- ==============================================================================
--- KAIRO Athletic & Nutrition — Initial Database Schema
+-- Yodha Fitness Zone — Initial Database Schema
 -- Migration 001: User Profiles, Roles, and Delivery Addresses
 -- ==============================================================================
 

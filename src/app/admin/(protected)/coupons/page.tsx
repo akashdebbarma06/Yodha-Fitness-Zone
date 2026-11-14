@@ -258,7 +258,7 @@ export default function AdminCouponsPage() {
                   type="text"
                   value={newDescription}
                   onChange={(e) => setNewDescription(e.target.value)}
-                  placeholder="20% off for verified powerlifting athletes"
+                  placeholder="Coupon description"
                   className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm focus:outline-none focus:border-primary"
                 />
               </div>

@@ -80,10 +80,11 @@ export default function AboutPage() {
 
           <div className="lg:col-span-6">
             <div className="relative aspect-[4/3] sm:aspect-[16/11] bg-surface-container-low overflow-hidden shadow-2xl border border-outline-variant">
+              {/* TODO: Replace with the gym's real photos. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGzbfhHC72ZBAr0QV_yU9DhJBkvpQWJXJPghHkF5Ik6IH77KUbLbxCq6l-J4IsWGBLurlggDdGzdKE4xAZzu_1T-AM0oRaqKZ_aC0iIZ5A78DGkOW0HrRH14rX9TlPXRV2iMLmwgJTgDMVG4419NClP3g1mcSrc6RjKXymi4PH8bUDq62uGuWuM1pAhrCLiTgpBAQmJlVVQo4G1kkz_FnQgPMirnR5K_WFA37YcYnE"
-                alt="Yodha Fitness Zone Interior"
+                src="/images/placeholder-gym.jpg"
+                alt="Gym training area"
                 className="w-full h-full object-cover grayscale-[10%]"
               />
               <div className="absolute bottom-4 left-4 right-4 bg-surface-container-lowest/90 backdrop-blur p-4 border border-outline-variant/60 flex items-center justify-between">

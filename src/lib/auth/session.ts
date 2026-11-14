@@ -41,7 +41,7 @@ export async function getCurrentUser(): Promise<AuthenticatedUser | null> {
         profile?.full_name ||
         (user.user_metadata?.full_name as string) ||
         (user.user_metadata?.name as string) ||
-        "Athlete";
+        "Member";
       const role = (profile?.role as UserRole) || "customer";
 
       return {

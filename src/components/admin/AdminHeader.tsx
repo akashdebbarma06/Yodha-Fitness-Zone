@@ -14,7 +14,7 @@ export function AdminHeader() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search formulations, order IDs (#YFZ...), customers..."
+          placeholder="Search products, order IDs (#YFZ...), customers..."
           className="w-full h-10 pl-9 pr-4 bg-surface-container-low border border-outline-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary placeholder:text-outline"
         />
         <span className="material-symbols-outlined text-[18px] absolute left-3 top-1/2 -translate-y-1/2 text-outline">
@@ -22,11 +22,11 @@ export function AdminHeader() {
         </span>
       </div>
 
-      {/* Operations Telemetry Strip */}
+      {/* Operations Info Strip */}
       <div className="hidden lg:flex items-center gap-4 text-xs font-mono">
         <div className="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low border border-outline-variant">
           <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-          <span className="text-secondary font-bold">COLD-CHAIN: 4.8°C</span>
+          <span className="text-secondary font-bold">STORE: CHARILAM</span>
         </div>
 
         <div className="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low border border-outline-variant">
@@ -35,8 +35,8 @@ export function AdminHeader() {
         </div>
 
         <div className="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low border border-outline-variant">
-          <span className="text-outline">NODE:</span>
-          <span className="text-primary font-semibold">BLR-AIR-01</span>
+          <span className="text-outline">LOCATION:</span>
+          <span className="text-primary font-semibold">TRIPURA (799103)</span>
         </div>
       </div>
 
@@ -49,7 +49,7 @@ export function AdminHeader() {
           <span className="material-symbols-outlined text-[16px]">
             add
           </span>
-          <span>Add Formulation</span>
+          <span>Add Product</span>
         </Link>
 
         <div className="w-9 h-9 bg-surface-container-low border border-outline-variant flex items-center justify-center text-on-surface relative cursor-pointer hover:bg-surface-container transition-colors">
