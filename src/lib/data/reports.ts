@@ -1,0 +1,41 @@
+import type { ReportData } from "@/types";
+
+export const REPORT_DATA: ReportData = {
+  grossGmv: 1842850,
+  discounts: 184285,
+  refunds: 36857,
+  shippingRevenue: 24500,
+  netRevenue: 1646208,
+  totalOrders: 1248,
+  avgOrderValue: 1476,
+  repeatPurchaseIndex: 68.0,
+  dailyVelocity: [
+    { date: "Oct 01", revenue: 42000, orders: 28 },
+    { date: "Oct 03", revenue: 38500, orders: 25 },
+    { date: "Oct 05", revenue: 51200, orders: 34 },
+    { date: "Oct 07", revenue: 44800, orders: 30 },
+    { date: "Oct 09", revenue: 56300, orders: 38 },
+    { date: "Oct 11", revenue: 49100, orders: 33 },
+    { date: "Oct 13", revenue: 62400, orders: 42 },
+    { date: "Oct 15", revenue: 58700, orders: 39 },
+    { date: "Oct 17", revenue: 67200, orders: 45 },
+    { date: "Oct 18", revenue: 74500, orders: 52 },
+    { date: "Oct 19", revenue: 71300, orders: 48 },
+    { date: "Oct 21", revenue: 63900, orders: 43 },
+    { date: "Oct 23", revenue: 69800, orders: 47 },
+    { date: "Oct 24", revenue: 72100, orders: 49 },
+  ],
+  categoryBreakdown: [
+    { category: "Native Whey Isolates", revenue: 1686518, percentage: 58.2 },
+    { category: "Cellular ATP & Creatine", revenue: 511806, percentage: 17.7 },
+    { category: "Mineral Hydration & Electrolytes", revenue: 326782, percentage: 11.3 },
+    { category: "Performance Hardware", revenue: 492646, percentage: 17.0 },
+    { category: "Recovery & Adaptogens", revenue: 168248, percentage: 5.8 },
+  ],
+  topProducts: [
+    { name: "Cold-Filtered Native Whey Isolate", sold: 482, revenue: 1686518 },
+    { name: "Ultra-Pure Micronized Creatine Monohydrate", sold: 394, revenue: 511806 },
+    { name: "Ionic Electrolyte & Hydration Minerals", sold: 218, revenue: 326782 },
+    { name: "Clean Fuel Anabolic Mass Gainer", sold: 154, revenue: 492646 },
+  ],
+};

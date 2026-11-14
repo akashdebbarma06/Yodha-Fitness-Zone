@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────
+   Yodha Design System — Kinetic Editorial Minimalism
+   Tailwind CSS v4 Theme Configuration
+   ────────────────────────────────────────────── */
+
+@theme inline {
+  /* ── Colors: Surface Architecture ── */
+  --color-surface: #f9f9f6;
+  --color-surface-dim: #dadad7;
+  --color-surface-bright: #f9f9f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f4f1;
+  --color-surface-container: #eeeeeb;
+  --color-surface-container-high: #e8e8e5;
+  --color-surface-container-highest: #e2e3e0;
+
+  /* ── Colors: Text & On-surface ── */
+  --color-on-surface: #1a1c1b;
+  --color-on-surface-variant: #444748;
+  --color-inverse-surface: #2f312f;
+  --color-inverse-on-surface: #f1f1ee;
+
+  /* ── Colors: Borders & Outlines ── */
+  --color-outline: #747878;
+  --color-outline-variant: #c4c7c7;
+  --color-hairline: #e5e5e0;
+  --color-input-border: #d8d8d2;
+  --color-surface-tint: #5f5e5e;
+  --color-surface-variant: #e2e3e0;
+
+  /* ── Colors: Primary ── */
+  --color-primary: #000000;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #1c1b1b;
+  --color-on-primary-container: #858383;
+  --color-inverse-primary: #c8c6c5;
+  --color-primary-fixed: #e5e2e1;
+  --color-primary-fixed-dim: #c8c6c5;
+  --color-on-primary-fixed: #1c1b1b;
+  --color-on-primary-fixed-variant: #474746;
+
+  /* ── Colors: Secondary (Sage) ── */
+  --color-secondary: #566342;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #d7e5bb;
+  --color-on-secondary-container: #5a6745;
+  --color-secondary-fixed: #dae8be;
+  --color-secondary-fixed-dim: #becca3;
+  --color-on-secondary-fixed: #141f05;
+  --color-on-secondary-fixed-variant: #3f4b2c;
+
+  /* ── Colors: Tertiary ── */
+  --color-tertiary: #000000;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #141f05;
+  --color-on-tertiary-container: #7b8965;
+  --color-tertiary-fixed: #d9e8be;
+  --color-tertiary-fixed-dim: #bdcca4;
+  --color-on-tertiary-fixed: #141f05;
+  --color-on-tertiary-fixed-variant: #3f4b2c;
+
+  /* ── Colors: Semantic States ── */
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-success: #36865a;
+  --color-warning: #c59b27;
+
+  /* ── Colors: Background ── */
+  --color-background: #f9f9f6;
+  --color-on-background: #1a1c1b;
+
+  /* PRD-specific semantic aliases */
+  --color-sage: #a3b18a;
+  --color-sage-hover: #7d8f65;
+  --color-sage-pressed: #586544;
+  --color-text-primary: #171717;
+  --color-text-secondary: #777777;
+
+  /* ── Font Families ── */
+  --font-heading: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+
+  /* ── Type Scale ── */
+  --font-size-display-xl: 56px;
+  --font-size-display-xl--line-height: 64px;
+  --font-size-display-xl--letter-spacing: -0.03em;
+  --font-size-display-xl-mobile: 38px;
+  --font-size-display-xl-mobile--line-height: 44px;
+  --font-size-display-xl-mobile--letter-spacing: -0.025em;
+  --font-size-headline-lg: 40px;
+  --font-size-headline-lg--line-height: 48px;
+  --font-size-headline-lg--letter-spacing: -0.025em;
+  --font-size-headline-lg-mobile: 28px;
+  --font-size-headline-lg-mobile--line-height: 34px;
+  --font-size-headline-lg-mobile--letter-spacing: -0.02em;
+  --font-size-headline-md: 28px;
+  --font-size-headline-md--line-height: 36px;
+  --font-size-headline-md--letter-spacing: -0.02em;
+  --font-size-headline-sm: 20px;
+  --font-size-headline-sm--line-height: 28px;
+  --font-size-headline-sm--letter-spacing: -0.015em;
+  --font-size-title-md: 16px;
+  --font-size-title-md--line-height: 24px;
+  --font-size-title-md--letter-spacing: -0.01em;
+  --font-size-body-lg: 18px;
+  --font-size-body-lg--line-height: 28px;
+  --font-size-body-lg--letter-spacing: -0.01em;
+  --font-size-body-md: 15px;
+  --font-size-body-md--line-height: 24px;
+  --font-size-body-md--letter-spacing: 0em;
+  --font-size-body-sm: 13px;
+  --font-size-body-sm--line-height: 20px;
+  --font-size-body-sm--letter-spacing: 0em;
+  --font-size-label-md: 12px;
+  --font-size-label-md--line-height: 16px;
+  --font-size-label-md--letter-spacing: 0.06em;
+  --font-size-label-sm: 10px;
+  --font-size-label-sm--line-height: 14px;
+  --font-size-label-sm--letter-spacing: 0.08em;
+  --font-size-metric-num: 24px;
+  --font-size-metric-num--line-height: 28px;
+  --font-size-metric-num--letter-spacing: -0.02em;
+
+  /* ── Border Radius ── */
+  --radius-sm: 0.125rem;
+  --radius-DEFAULT: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* ── Spacing Tokens ── */
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-mobile: 1rem;
+  --spacing-margin: 3rem;
+  --spacing-margin-mobile: 1.25rem;
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2.5rem;
+}
+
+/* ──────────────────────────────────────────────
+   Base Styles
+   ────────────────────────────────────────────── */
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    overscroll-behavior: none;
+    font-family: var(--font-body);
+    background: var(--color-surface);
+    color: var(--color-on-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-numeric: tabular-nums;
+  }
+
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Scrollbar hidden */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: none;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-secondary-container);
+    color: var(--color-on-secondary-container);
+  }
+
+  /* Focus rings — editorial precision */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Material Symbols Outlined
+   ────────────────────────────────────────────── */
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}

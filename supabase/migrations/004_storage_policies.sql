@@ -1,0 +1,2 @@
+-- TODO: Add Storage bucket policies for product images.
+-- Restrict writes to authorized administrators.

@@ -1,0 +1,2 @@
+-- TODO: Add carefully reviewed transactional functions for stock reservation,
+-- order state transitions and inventory movements where required.

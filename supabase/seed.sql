@@ -1,0 +1,1 @@
+-- Development-only seed data. Do not insert real customer data or production secrets.
