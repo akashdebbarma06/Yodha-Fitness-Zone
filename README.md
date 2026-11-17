@@ -42,7 +42,7 @@
 - **Styling:** Tailwind CSS (Kinetic Editorial Minimalism design system)
 - **Database & Auth:** Supabase (PostgreSQL with Row Level Security)
 - **Payments:** Razorpay (UPI, Credit/Debit Cards, Netbanking, COD)
-- **Logistics:** Shiprocket (Delhivery, Blue Dart, express courier tracking)
+- **Logistics:** Courier integration (Delhivery / express courier tracking)
 - **Deployment:** Vercel
 
 ---

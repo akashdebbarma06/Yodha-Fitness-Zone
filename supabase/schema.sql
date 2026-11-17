@@ -151,7 +151,7 @@ create table if not exists public.orders (
   razorpay_payment_id text,
   is_cod boolean not null default false,
   cod_collected boolean default false,
-  courier text default 'Shiprocket (Delhivery / Blue Dart)',
+  courier text default 'Courier',
   awb text,
   shipment_status text default 'label_created',
   notes text,

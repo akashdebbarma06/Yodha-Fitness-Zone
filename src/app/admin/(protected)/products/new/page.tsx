@@ -7,24 +7,20 @@ import { useRouter } from "next/navigation";
 export default function NewProductPage() {
   const router = useRouter();
 
-  const [name, setName] = useState("Cold-Filtered Native Whey Isolate");
-  const [subtitle, setSubtitle] = useState("Single-Origin Madagascar Vanilla Bean");
-  const [category, setCategory] = useState("Native Whey Isolates");
-  const [description, setDescription] = useState(
-    "Undenatured native whey peptide matrix extracted directly from raw pasture-fed milk via low-temperature cross-flow ceramic filtration. 28g pure protein per scoop."
-  );
-  const [ingredients, setIngredients] = useState(
-    "Native Whey Isolate (Milk), Natural Flavors, Sunflower Lecithin (<0.5%), Stevia Leaf Extract."
-  );
-  const [size, setSize] = useState("1 kg");
-  const [flavor, setFlavor] = useState("Madagascar Vanilla");
-  const [servings, setServings] = useState(30);
-  const [price, setPrice] = useState(3499);
-  const [comparePrice, setComparePrice] = useState(3999);
-  const [stock, setStock] = useState(84);
-  const [batch, setBatch] = useState("NW-8902");
-  const [hsn, setHsn] = useState("2106 90 99");
-  const [fssai, setFssai] = useState("10020011003412");
+  const [name, setName] = useState("");
+  const [subtitle, setSubtitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [size, setSize] = useState("");
+  const [flavor, setFlavor] = useState("");
+  const [servings, setServings] = useState<number | "">("");
+  const [price, setPrice] = useState<number | "">("");
+  const [comparePrice, setComparePrice] = useState<number | "">("");
+  const [stock, setStock] = useState<number | "">("");
+  const [batch, setBatch] = useState("");
+  const [hsn, setHsn] = useState("");
+  const [fssai, setFssai] = useState("");
 
   const [saving, setSaving] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -127,6 +123,7 @@ export default function NewProductPage() {
                 onChange={(e) => setCategory(e.target.value)}
                 className="w-full h-11 px-3 bg-surface border border-outline-variant text-xs uppercase font-semibold focus:outline-none focus:border-primary"
               >
+                <option value="">Select Category</option>
                 <option value="Native Whey Isolates">Native Whey Isolates</option>
                 <option value="Cellular ATP & Creatine">Cellular ATP &amp; Creatine</option>
                 <option value="Mineral Hydration & Electrolytes">Mineral Hydration &amp; Electrolytes</option>
@@ -200,7 +197,7 @@ export default function NewProductPage() {
               <input
                 type="number"
                 value={servings}
-                onChange={(e) => setServings(Number(e.target.value))}
+                onChange={(e) => setServings(e.target.value === "" ? "" : Number(e.target.value))}
                 className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm focus:outline-none focus:border-primary font-mono"
               />
             </div>
@@ -212,7 +209,7 @@ export default function NewProductPage() {
               <input
                 type="number"
                 value={stock}
-                onChange={(e) => setStock(Number(e.target.value))}
+                onChange={(e) => setStock(e.target.value === "" ? "" : Number(e.target.value))}
                 className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm focus:outline-none focus:border-primary font-mono font-bold text-secondary"
               />
             </div>
@@ -226,7 +223,7 @@ export default function NewProductPage() {
               <input
                 type="number"
                 value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
+                onChange={(e) => setPrice(e.target.value === "" ? "" : Number(e.target.value))}
                 className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-mono font-bold text-primary focus:outline-none focus:border-primary text-base"
               />
             </div>
@@ -238,7 +235,7 @@ export default function NewProductPage() {
               <input
                 type="number"
                 value={comparePrice}
-                onChange={(e) => setComparePrice(Number(e.target.value))}
+                onChange={(e) => setComparePrice(e.target.value === "" ? "" : Number(e.target.value))}
                 className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-mono text-outline focus:outline-none focus:border-primary"
               />
             </div>

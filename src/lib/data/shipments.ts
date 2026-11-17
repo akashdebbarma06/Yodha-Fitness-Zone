@@ -19,7 +19,6 @@ export const SHIPMENTS: Shipment[] = [
 
 export function generateMockAWB(courier: string): string {
   const prefixes: Record<string, string> = {
-    "Blue Dart Apex": "BDA",
     Delhivery: "DEL",
     Shadowfax: "SFX",
   };

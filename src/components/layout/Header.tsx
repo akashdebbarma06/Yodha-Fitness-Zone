@@ -25,7 +25,7 @@ export function Header() {
       <div className="bg-primary-container text-surface-bright border-b border-primary py-space-xs px-gutter">
         <div className="max-w-[1360px] mx-auto flex items-center justify-center text-center">
           <p className="font-body text-label-sm tracking-[0.1em] uppercase font-semibold text-surface-container-high">
-            FREE EXPRESS SHIPPING ON ORDERS OVER ₹1,499 • PAN-INDIA DELIVERY
+            PAN-INDIA DELIVERY
           </p>
         </div>
       </div>

@@ -220,24 +220,6 @@ export default function AdminSettingsPage() {
             <label className="flex items-center gap-3 cursor-pointer">
               <input
                 type="checkbox"
-                checked={settings.notifications.whatsapp}
-                onChange={(e) =>
-                  setSettings({
-                    ...settings,
-                    notifications: {
-                      ...settings.notifications,
-                      whatsapp: e.target.checked,
-                    },
-                  })
-                }
-                className="w-4 h-4 accent-primary"
-              />
-              <span>Enable live Blue Dart flight departure alerts via WhatsApp Business API</span>
-            </label>
-
-            <label className="flex items-center gap-3 cursor-pointer">
-              <input
-                type="checkbox"
                 checked={settings.notifications.lowStock}
                 onChange={(e) =>
                   setSettings({

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { PRODUCTS } from "@/lib/data/products";
+import { MEMBERSHIP_PLANS } from "@/lib/data/memberships";
+import { formatINR } from "@/lib/utils";
 import { ProductCard } from "@/components/store/ProductCard";
 
 export default function FlagshipHomepage() {
@@ -89,7 +91,7 @@ export default function FlagshipHomepage() {
               <img
                 alt="Gym training area"
                 className="w-full h-full object-cover grayscale-[15%] contrast-105 hover:scale-105 transition-transform duration-700 ease-out"
-                src="/images/placeholder-gym.jpg"
+                src="/images/placeholder-gym.svg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
 
@@ -136,7 +138,7 @@ export default function FlagshipHomepage() {
                   <img
                     alt="Gym training area"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                    src="/images/placeholder-gym.jpg"
+                    src="/images/placeholder-gym.svg"
                   />
                 </div>
                 <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mb-2">
@@ -168,7 +170,7 @@ export default function FlagshipHomepage() {
                   <img
                     alt="Gym training area"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                    src="/images/placeholder-gym.jpg"
+                    src="/images/placeholder-gym.svg"
                   />
                 </div>
                 <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mb-2">
@@ -200,7 +202,7 @@ export default function FlagshipHomepage() {
                   <img
                     alt="Gym training area"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                    src="/images/placeholder-gym.jpg"
+                    src="/images/placeholder-gym.svg"
                   />
                 </div>
                 <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mb-2">
@@ -243,11 +245,22 @@ export default function FlagshipHomepage() {
           </div>
 
           {/* Product Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PRODUCTS.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          {PRODUCTS.filter((p) => p.status === "active").length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {PRODUCTS.filter((p) => p.status === "active").map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <div className="p-12 text-center bg-surface-container-lowest border border-outline-variant space-y-3">
+              <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary">
+                Storefront Catalog Launching Soon
+              </h3>
+              <p className="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">
+                Supplements and fitness gear catalog is currently being prepared. Check back shortly or visit us at Charilam.
+              </p>
+            </div>
+          )}
 
           {/* View All Button */}
           <div className="mt-12 text-center">
@@ -277,7 +290,7 @@ export default function FlagshipHomepage() {
               <img
                 alt="Gym training area"
                 className="w-full h-full object-cover grayscale-[10%]"
-                src="/images/placeholder-gym.jpg"
+                src="/images/placeholder-gym.svg"
               />
               <div className="absolute inset-0 bg-primary/20" />
             </div>
@@ -405,85 +418,45 @@ export default function FlagshipHomepage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {/* Monthly */}
-            <div className="bg-surface-container-lowest p-6 flex flex-col justify-between border border-outline-variant/40">
-              <div>
-                <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
-                  1 MONTH
-                </span>
-                <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mt-1 mb-3">
-                  Monthly Pass
-                </h3>
-                <div className="mb-4">
-                  <span className="font-mono text-2xl font-bold text-primary">₹0</span>
+          {MEMBERSHIP_PLANS.filter((p) => p.active).length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {MEMBERSHIP_PLANS.filter((p) => p.active).slice(0, 3).map((plan) => (
+                <div key={plan.id} className="bg-surface-container-lowest p-6 flex flex-col justify-between border border-outline-variant/40">
+                  <div>
+                    <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
+                      {plan.duration.replace("_", " ")}
+                    </span>
+                    <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mt-1 mb-3">
+                      {plan.name}
+                    </h3>
+                    <div className="mb-4">
+                      <span className="font-mono text-2xl font-bold text-primary">{formatINR(plan.price)}</span>
+                    </div>
+                    <p className="text-xs text-on-surface-variant leading-relaxed">
+                      {plan.tagline}
+                    </p>
+                  </div>
+                  <div className="pt-6 mt-6 border-t border-outline-variant/40">
+                    <Link
+                      href="/memberships"
+                      className="w-full h-11 bg-surface-container-low hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center justify-center transition-colors"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
-                <p className="text-xs text-on-surface-variant leading-relaxed">
-                  [PLACEHOLDER — ask the gym] Plan price and benefits to be confirmed.
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-outline-variant/40">
-                <Link
-                  href="/memberships"
-                  className="w-full h-11 bg-surface-container-low hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center justify-center transition-colors"
-                >
-                  View Details
-                </Link>
-              </div>
+              ))}
             </div>
-
-            {/* Quarterly */}
-            <div className="bg-surface-container-lowest p-6 flex flex-col justify-between border border-outline-variant/40">
-              <div>
-                <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
-                  3 MONTHS
-                </span>
-                <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mt-1 mb-3">
-                  Quarterly Plan
-                </h3>
-                <div className="mb-4">
-                  <span className="font-mono text-2xl font-bold text-primary">₹0</span>
-                </div>
-                <p className="text-xs text-on-surface-variant leading-relaxed">
-                  [PLACEHOLDER — ask the gym] Plan price and benefits to be confirmed.
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-outline-variant/40">
-                <Link
-                  href="/memberships"
-                  className="w-full h-11 bg-surface-container-low hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center justify-center transition-colors"
-                >
-                  View Details
-                </Link>
-              </div>
+          ) : (
+            <div className="p-12 text-center bg-surface-container-lowest border border-outline-variant space-y-3">
+              <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary">
+                Membership Plans Updating
+              </h3>
+              <p className="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">
+                Membership tiers and admission fees are being updated. Call +91 87987 03787 or visit our Charilam gym facility for latest enrollment rates.
+              </p>
             </div>
-
-            {/* Annual */}
-            <div className="bg-surface-container-lowest p-6 flex flex-col justify-between border border-outline-variant/40">
-              <div>
-                <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
-                  12 MONTHS
-                </span>
-                <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mt-1 mb-3">
-                  Annual Pass
-                </h3>
-                <div className="mb-4">
-                  <span className="font-mono text-2xl font-bold text-primary">₹0</span>
-                </div>
-                <p className="text-xs text-on-surface-variant leading-relaxed">
-                  [PLACEHOLDER — ask the gym] Plan price and benefits to be confirmed.
-                </p>
-              </div>
-              <div className="pt-6 mt-6 border-t border-outline-variant/40">
-                <Link
-                  href="/memberships"
-                  className="w-full h-11 bg-surface-container-low hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center justify-center transition-colors"
-                >
-                  View Details
-                </Link>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 

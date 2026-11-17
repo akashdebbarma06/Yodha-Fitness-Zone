@@ -6,17 +6,19 @@ import Link from "next/link";
 import { PRODUCTS } from "@/lib/data/products";
 import { ProductCard } from "@/components/store/ProductCard";
 
+const activeProductsList = PRODUCTS.filter((p) => p.status === "active");
+
 const CATEGORIES: { label: string; value: string; count: number }[] = [
-  { label: "All Products", value: "all", count: PRODUCTS.length },
+  { label: "All Products", value: "all", count: activeProductsList.length },
   {
     label: "Sports Nutrition",
     value: "Sports Nutrition",
-    count: PRODUCTS.filter((p) => p.category === "Sports Nutrition").length,
+    count: activeProductsList.filter((p) => p.category === "Sports Nutrition").length,
   },
   {
     label: "Fitness Essentials",
     value: "Fitness Essentials",
-    count: PRODUCTS.filter((p) => p.category === "Fitness Essentials").length,
+    count: activeProductsList.filter((p) => p.category === "Fitness Essentials").length,
   },
 ];
 
@@ -39,7 +41,7 @@ function ShopContent() {
   };
 
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((product) => {
+    return activeProductsList.filter((product) => {
       // Category filter
       if (
         selectedCategory !== "all" &&
@@ -124,7 +126,7 @@ function ShopContent() {
                 Catalog
               </span>
               <span className="font-metric-num text-metric-num text-on-surface font-bold">
-                {PRODUCTS.length} Listed
+                {activeProductsList.length} Listed
               </span>
             </div>
           </div>
@@ -166,7 +168,7 @@ function ShopContent() {
             </button>
 
             <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline hidden sm:inline">
-              Showing {filteredProducts.length} of {PRODUCTS.length} products
+              Showing {filteredProducts.length} of {activeProductsList.length} products
             </span>
 
             {(selectedCategory !== "all" || inStockOnly || searchQuery) && (

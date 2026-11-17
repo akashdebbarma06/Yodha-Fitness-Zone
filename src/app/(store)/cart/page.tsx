@@ -44,10 +44,10 @@ export default function CartPage() {
     }
   };
 
-  const progressPercent = Math.min(
-    100,
-    Math.round((subtotal / freeShippingThreshold) * 100)
-  );
+  const progressPercent =
+    freeShippingThreshold > 0
+      ? Math.min(100, Math.round((subtotal / freeShippingThreshold) * 100))
+      : 0;
 
   return (
     <div className="w-full bg-surface py-10 px-gutter">
@@ -114,35 +114,37 @@ export default function CartPage() {
             {/* Left Column: Items & Shipping Meter (8 cols) */}
             <div className="lg:col-span-8 space-y-6">
               {/* Free Shipping Progress Indicator */}
-              <div className="p-5 bg-surface-container-lowest border border-outline-variant">
-                <div className="flex items-center justify-between text-label-sm font-label-sm uppercase tracking-wider mb-2.5">
-                  {amountToFreeShipping > 0 ? (
-                    <span className="text-on-surface-variant">
-                      Add{" "}
-                      <strong className="text-primary font-bold">
-                        {formatINR(amountToFreeShipping)}
-                      </strong>{" "}
-                      more for free shipping
-                    </span>
-                  ) : (
-                    <span className="text-secondary font-bold flex items-center gap-1.5">
-                      <span className="material-symbols-outlined text-[18px]">
-                        check_circle
+              {freeShippingThreshold > 0 && (
+                <div className="p-5 bg-surface-container-lowest border border-outline-variant">
+                  <div className="flex items-center justify-between text-label-sm font-label-sm uppercase tracking-wider mb-2.5">
+                    {amountToFreeShipping > 0 ? (
+                      <span className="text-on-surface-variant">
+                        Add{" "}
+                        <strong className="text-primary font-bold">
+                          {formatINR(amountToFreeShipping)}
+                        </strong>{" "}
+                        more for free shipping
                       </span>
-                      Free Shipping Unlocked
+                    ) : (
+                      <span className="text-secondary font-bold flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-[18px]">
+                          check_circle
+                        </span>
+                        Free Shipping Unlocked
+                      </span>
+                    )}
+                    <span className="font-semibold text-outline">
+                      {progressPercent}%
                     </span>
-                  )}
-                  <span className="font-semibold text-outline">
-                    {progressPercent}%
-                  </span>
+                  </div>
+                  <div className="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-secondary transition-all duration-500 ease-out"
+                      style={{ width: `${progressPercent}%` }}
+                    />
+                  </div>
                 </div>
-                <div className="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-secondary transition-all duration-500 ease-out"
-                    style={{ width: `${progressPercent}%` }}
-                  />
-                </div>
-              </div>
+              )}
 
               {/* Items List */}
               <div className="bg-surface-container-lowest border border-outline-variant divide-y divide-outline-variant/60">

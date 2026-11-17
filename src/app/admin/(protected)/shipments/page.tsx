@@ -39,59 +39,11 @@ export default function AdminShipmentsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-6">
         <div>
           <h1 className="font-headline-md text-headline-md font-semibold uppercase tracking-tight text-primary">
-            Shipments &amp; Multi-Courier Dispatch Orchestrator
+            Shipments
           </h1>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-            Aggregated Shiprocket routing across Blue Dart Apex Air Priority, Delhivery Linehaul, and Shadowfax.
+            Demo data — courier integration connects at launch.
           </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="px-3.5 py-1.5 bg-surface-container-low border border-outline-variant text-xs font-mono">
-            AIR DISPATCH STATUS: <strong className="text-secondary font-bold">100% NOMINAL</strong>
-          </div>
-        </div>
-      </div>
-
-      {/* Courier Stats Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="p-5 bg-surface-container-lowest border border-outline-variant space-y-1">
-          <div className="flex justify-between items-center text-xs font-semibold uppercase text-outline">
-            <span>Blue Dart Apex Priority</span>
-            <span className="text-secondary font-bold">Air Linehaul</span>
-          </div>
-          <span className="font-metric-num text-2xl font-bold text-primary block">
-            42 Active Conclaves
-          </span>
-          <span className="text-[11px] text-on-surface-variant">
-            Average transit: 22.4 hours pan-India
-          </span>
-        </div>
-
-        <div className="p-5 bg-surface-container-lowest border border-outline-variant space-y-1">
-          <div className="flex justify-between items-center text-xs font-semibold uppercase text-outline">
-            <span>Delhivery Surface</span>
-            <span className="text-primary font-bold">Regional Linehaul</span>
-          </div>
-          <span className="font-metric-num text-2xl font-bold text-primary block">
-            18 Active Conclaves
-          </span>
-          <span className="text-[11px] text-on-surface-variant">
-            Heavy mass gainers (3kg–5kg tubs)
-          </span>
-        </div>
-
-        <div className="p-5 bg-surface-container-lowest border border-outline-variant space-y-1">
-          <div className="flex justify-between items-center text-xs font-semibold uppercase text-outline">
-            <span>Thermal 4x6 Manifests</span>
-            <span className="text-secondary font-bold">Zebra / Rollo</span>
-          </div>
-          <span className="font-metric-num text-2xl font-bold text-primary block">
-            Ready for Pickup
-          </span>
-          <span className="text-[11px] text-on-surface-variant">
-            Shipping label attached
-          </span>
         </div>
       </div>
 

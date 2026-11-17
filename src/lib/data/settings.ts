@@ -10,7 +10,8 @@ export const STORE_SETTINGS: StoreSettings = {
   originState: "Tripura",
   supportEmail: "contact@yodhafitnesszone.in", // Confirm the gym owns this domain before launch.
   supportPhone: "+91 87987 03787",
-  freeShippingThreshold: 1499,
+  // [PLACEHOLDER — ask the gym] Confirm free-shipping threshold before enabling.
+  freeShippingThreshold: 0,
   lowStockAlert: 25,
   razorpayKeyId: "rzp_live_XXXXXXXXXXXXXXX",
   razorpayWebhookSecret: "whsec_XXXXXXXXXXXXXXX",

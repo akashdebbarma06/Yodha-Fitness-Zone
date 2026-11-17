@@ -30,19 +30,17 @@ const INITIAL_WISHLIST: {
 /* ──────────────────────────────────────────────
    Sample Addresses
    ────────────────────────────────────────────── */
-const INITIAL_ADDRESSES = [
-  {
-    id: "addr-01",
-    tag: "Home",
-    fullName: "[PLACEHOLDER — ask the gym] Demo Member",
-    phone: "+91 87987 03787",
-    street: "NH08 near Tripura Gramin Bank",
-    city: "Charilam",
-    state: "Tripura",
-    pinCode: "799103",
-    isDefault: true,
-  },
-];
+const INITIAL_ADDRESSES: {
+  id: string;
+  tag: string;
+  fullName: string;
+  phone: string;
+  street: string;
+  city: string;
+  state: string;
+  pinCode: string;
+  isDefault: boolean;
+}[] = [];
 
 export default function AccountPage() {
   const { user, signOut, isLoading } = useAuth();
@@ -54,8 +52,8 @@ export default function AccountPage() {
   const [orderFilter, setOrderFilter] = useState<"all" | "in_transit" | "delivered">("all");
 
   // Profile Form State
-  const [profileName, setProfileName] = useState(user?.fullName || "[PLACEHOLDER — ask the gym] Demo Member");
-  const [profileEmail, setProfileEmail] = useState(user?.email || "member@example.com");
+  const [profileName, setProfileName] = useState(user?.fullName || "");
+  const [profileEmail, setProfileEmail] = useState(user?.email || "");
   const [discipline, setDiscipline] = useState("Weight Training & Cardio");
   const [profileSaved, setProfileSaved] = useState(false);
 
@@ -63,8 +61,8 @@ export default function AccountPage() {
   const [showAddressModal, setShowAddressModal] = useState(false);
   const [newAddress, setNewAddress] = useState({
     tag: "Home",
-    fullName: user?.fullName || "[PLACEHOLDER — ask the gym] Demo Member",
-    phone: user?.phone || "+91 87987 03787",
+    fullName: user?.fullName || "",
+    phone: user?.phone || "",
     street: "",
     city: "Charilam",
     state: "Tripura",
@@ -76,12 +74,21 @@ export default function AccountPage() {
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
 
   // Fallback customer greeting
-  const displayName = user?.fullName || "Member";
+  const displayName =
+    user?.fullName && !user.fullName.includes("Demo") && !user.fullName.includes("[PLACEHOLDER")
+      ? user.fullName
+      : (user?.email ? user.email.split("@")[0] : "Member");
   const firstName = displayName.split(" ")[0] || "Member";
-  const displayPhone = user?.phone || "+91 87987 03787";
+  const displayPhone = user?.phone || "";
+
+  // Demo records must not render on customer-facing pages
+  const customerOrders =
+    !user?.id || user.id.includes("demo")
+      ? []
+      : ORDERS.filter((order) => order.customerId === user.id);
 
   // Filtered orders
-  const filteredOrders = ORDERS.filter((order) => {
+  const filteredOrders = customerOrders.filter((order) => {
     if (orderFilter === "all") return true;
     if (orderFilter === "in_transit") return order.orderStatus === "in_transit";
     if (orderFilter === "delivered") return order.orderStatus === "delivered";
@@ -377,7 +384,7 @@ export default function AccountPage() {
                   </svg>
                 </div>
                 <span className="text-2xl sm:text-[28px] font-semibold text-[#1F1E1C] mt-2 mb-0.5 tracking-tight">
-                  12
+                  {customerOrders.length}
                 </span>
                 <span className="text-xs text-neutral-500 font-normal">
                   Total Orders
@@ -429,7 +436,7 @@ export default function AccountPage() {
                   </svg>
                 </div>
                 <span className="text-2xl sm:text-[28px] font-semibold text-[#1F1E1C] mt-2 mb-0.5 tracking-tight">
-                  8
+                  0
                 </span>
                 <span className="text-xs text-neutral-500 font-normal">
                   Reviews
@@ -439,11 +446,11 @@ export default function AccountPage() {
               {/* Stat 4: Gym Membership */}
               <div
                 onClick={() => setActiveTab("membership")}
-                className="bg-white rounded-2xl p-5 border border-secondary/30 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center hover:shadow-md transition-all cursor-pointer group"
+                className="bg-white rounded-2xl p-5 border border-outline-variant/60 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center hover:shadow-md transition-all cursor-pointer group"
               >
-                <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-500 group-hover:scale-110 transition-transform">
                   <svg
-                    className="w-5 h-5 text-secondary"
+                    className="w-5 h-5 text-neutral-500"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -455,11 +462,11 @@ export default function AccountPage() {
                     <line x1="2" x2="22" y1="10" y2="10" />
                   </svg>
                 </div>
-                <span className="text-sm font-bold text-secondary uppercase mt-2 mb-0.5 tracking-wider">
-                  ACTIVE
+                <span className="text-sm font-bold text-neutral-400 uppercase mt-2 mb-0.5 tracking-wider">
+                  NONE
                 </span>
                 <span className="text-xs text-neutral-500 font-normal">
-                  Gym Pass • Quarterly
+                  Gym Pass • Inactive
                 </span>
               </div>
             </div>
@@ -528,7 +535,7 @@ export default function AccountPage() {
 
                   {/* Order List */}
                   <div className="divide-y divide-neutral-100">
-                    {ORDERS.slice(0, 3).map((order) => (
+                    {customerOrders.slice(0, 3).map((order) => (
                       <div
                         key={order.id}
                         className="py-4 first:pt-0 last:pb-0 flex items-center justify-between gap-4"
@@ -537,7 +544,7 @@ export default function AccountPage() {
                           <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl bg-[#FAF9F5] border border-neutral-100 p-1 flex items-center justify-center shrink-0 overflow-hidden">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
-                              src={order.items[0]?.image || "/images/placeholder-gym.jpg"}
+                              src={order.items[0]?.image || "/images/placeholder-gym.svg"}
                               alt={order.items[0]?.name || "Order item"}
                               className="w-full h-full object-contain"
                             />
@@ -578,7 +585,7 @@ export default function AccountPage() {
                         </div>
                       </div>
                     ))}
-                    {ORDERS.length === 0 && (
+                    {customerOrders.length === 0 && (
                       <div className="py-8 text-center text-xs text-neutral-400">
                         No orders yet.
                       </div>
@@ -654,55 +661,23 @@ export default function AccountPage() {
                   </div>
 
                   {/* Digital Pass Card */}
-                  <div className="max-w-xl mx-auto p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1C1B1A] via-[#2A2826] to-[#1C1B1A] text-white shadow-xl border border-white/10 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl pointer-events-none" />
-
-                    {/* Pass Header */}
-                    <div className="flex items-center justify-between pb-6 border-b border-white/10">
-                      <div>
-                        <span className="font-heading text-lg font-bold uppercase tracking-wider text-white block">
-                          YODHA
-                        </span>
-                        <span className="text-[10px] font-label-sm uppercase tracking-[0.2em] text-secondary font-bold">
-                          FITNESS ZONE • MEMBER PASS
-                        </span>
-                      </div>
-                      <span className="px-3 py-1 bg-secondary text-on-secondary text-xs uppercase font-bold tracking-wider rounded-full">
-                        ACTIVE
-                      </span>
+                  <div className="max-w-xl mx-auto p-8 rounded-2xl bg-white border border-[#EBE7DF] text-center space-y-4 shadow-sm">
+                    <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mx-auto text-neutral-400">
+                      <span className="material-symbols-outlined text-[32px]">badge</span>
                     </div>
-
-                    {/* Member Details */}
-                    <div className="py-6 grid grid-cols-2 gap-4">
-                      <div>
-                        <span className="text-[11px] text-white/50 uppercase tracking-wider block">Member Name</span>
-                        <span className="text-base font-semibold text-white mt-0.5 block">{displayName}</span>
-                      </div>
-                      <div>
-                        <span className="text-[11px] text-white/50 uppercase tracking-wider block">Member ID</span>
-                        <span className="text-base font-mono font-bold text-secondary mt-0.5 block">YFZ-MEM-1042</span>
-                      </div>
-                      <div>
-                        <span className="text-[11px] text-white/50 uppercase tracking-wider block">Plan Tier</span>
-                        <span className="text-sm font-medium text-white mt-0.5 block">Quarterly (3 Months)</span>
-                      </div>
-                      <div>
-                        <span className="text-[11px] text-white/50 uppercase tracking-wider block">Valid Until</span>
-                        <span className="text-sm font-mono text-white mt-0.5 block">31 Dec 2026</span>
-                      </div>
-                    </div>
-
-                    {/* Pass Footer Barcode & QR Placeholder */}
-                    <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-white/60">
-                      <div>
-                        <span className="block font-mono text-[10px] tracking-widest text-white/40">BRANCH</span>
-                        <span className="text-white/80">NH08, Charilam, Tripura</span>
-                      </div>
-                      <div className="text-right">
-                        <span className="block font-mono text-[10px] tracking-widest text-white/40">STATUS</span>
-                        <span className="text-secondary font-semibold">Verified Active</span>
-                      </div>
-                    </div>
+                    <h3 className="font-serif text-xl font-normal text-[#1F1E1C]">
+                      No Active Membership Pass
+                    </h3>
+                    <p className="text-xs text-neutral-500 max-w-sm mx-auto leading-relaxed">
+                      You currently do not have an active gym membership pass. Enroll online or at our Charilam facility to receive your digital pass.
+                    </p>
+                    <Link
+                      href="/memberships"
+                      className="inline-flex items-center gap-1.5 px-6 py-2.5 bg-primary hover:bg-neutral-800 text-on-primary text-xs font-semibold uppercase tracking-wider rounded-lg transition-colors"
+                    >
+                      <span>Explore Membership Plans</span>
+                      <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </Link>
                   </div>
 
                   {/* Included Privileges */}
@@ -811,9 +786,13 @@ export default function AccountPage() {
                           </div>
 
                           <div className="flex items-center gap-3 text-xs text-neutral-500 flex-wrap">
-                            <span>Carrier: {order.courier || "Blue Dart Air Priority"}</span>
-                            <span>•</span>
-                            <span>AWB: {order.awb || "BDA2409876541"}</span>
+                            <span>Carrier: {order.courier || "Courier (assigned at dispatch)"}</span>
+                            {order.awb && (
+                              <>
+                                <span>•</span>
+                                <span>AWB: {order.awb}</span>
+                              </>
+                            )}
                           </div>
                         </div>
 

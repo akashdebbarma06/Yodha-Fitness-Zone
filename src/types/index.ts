@@ -185,7 +185,7 @@ export interface InventoryItem {
   warehouseLocation: string;
 }
 
-export type CourierName = "Blue Dart Apex" | "Delhivery" | "Shadowfax";
+export type CourierName = "Delhivery" | "Shadowfax" | "Standard Courier";
 
 export type ShipmentStatus =
   | "ready_to_ship"

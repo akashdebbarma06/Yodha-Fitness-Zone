@@ -8,9 +8,9 @@ interface Props {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProductBySlug(slug) || PRODUCTS[0];
+  const product = getProductBySlug(slug);
 
-  if (!product) {
+  if (!product || product.status !== "active") {
     notFound();
   }
 

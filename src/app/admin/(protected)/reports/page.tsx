@@ -53,7 +53,6 @@ export default function AdminReportsPage() {
             <span className="font-metric-num text-2xl font-bold text-primary block mt-1">
               {formatINR(REPORT_DATA.grossGmv)}
             </span>
-            <span className="text-[11px] text-outline">1,248 orders</span>
           </div>
 
           <div className="p-4 bg-surface-container-low border border-outline-variant">
@@ -73,7 +72,6 @@ export default function AdminReportsPage() {
             <span className="font-metric-num text-2xl font-bold text-error block mt-1">
               -{formatINR(REPORT_DATA.refunds)}
             </span>
-            <span className="text-[11px] text-outline">2.0% claim rate</span>
           </div>
 
           <div className="p-4 bg-surface-container-low border border-outline-variant">

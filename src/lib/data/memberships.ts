@@ -14,7 +14,7 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
       "[PLACEHOLDER — ask the gym] Plan price and benefits to be confirmed.",
     ],
     isPopular: false,
-    active: true,
+    active: false,
   },
   {
     id: "plan-quarterly",
@@ -29,7 +29,7 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
       "[PLACEHOLDER — ask the gym] Plan price and benefits to be confirmed.",
     ],
     isPopular: true,
-    active: true,
+    active: false,
   },
   {
     id: "plan-half-yearly",
@@ -44,7 +44,7 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
       "[PLACEHOLDER — ask the gym] Plan price and benefits to be confirmed.",
     ],
     isPopular: false,
-    active: true,
+    active: false,
   },
   {
     id: "plan-annual",
@@ -59,7 +59,7 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
       "[PLACEHOLDER — ask the gym] Plan price and benefits to be confirmed.",
     ],
     isPopular: false,
-    active: true,
+    active: false,
   },
   {
     id: "plan-transformation",
@@ -74,7 +74,7 @@ export const MEMBERSHIP_PLANS: MembershipPlan[] = [
       "[PLACEHOLDER — ask the gym] Plan price and benefits to be confirmed.",
     ],
     isPopular: false,
-    active: true,
+    active: false,
   },
 ];
 
@@ -85,7 +85,7 @@ export const INITIAL_MEMBERSHIPS: UserMembership[] = [
     membershipNumber: "YFZ-MEM-1001",
     userId: "cust-001",
     userName: "[PLACEHOLDER — ask the gym] Demo",
-    userPhone: "+91 87987 03787",
+    userPhone: "",
     userEmail: "demo@example.com",
     planId: "plan-monthly",
     planName: "Monthly Pass",

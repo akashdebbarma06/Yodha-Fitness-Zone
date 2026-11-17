@@ -148,8 +148,12 @@ export default function CustomerLoginPage() {
       } else {
         // Verified with Supabase!
         const userId = data.user?.id || `cust_${cleanDigits}`;
-        const userName =
-          data.user?.user_metadata?.full_name || "Vikram Malhotra";
+        const rawName =
+          (data.user?.user_metadata?.full_name as string) ||
+          (data.user?.user_metadata?.name as string) ||
+          "";
+        const displayName =
+          rawName || (data.user?.email ? data.user.email.split("@")[0] : "");
 
         // Upsert customer profile in profiles table
         try {
@@ -157,7 +161,7 @@ export default function CustomerLoginPage() {
             {
               id: userId,
               phone: formattedE164,
-              full_name: userName,
+              full_name: rawName || undefined,
               role: "customer",
             },
             { onConflict: "id" }
@@ -170,7 +174,7 @@ export default function CustomerLoginPage() {
         setCustomerAuth({
           id: userId,
           phone: formattedE164,
-          name: userName,
+          name: displayName || "Member",
           role: "customer",
         });
 
@@ -178,10 +182,11 @@ export default function CustomerLoginPage() {
       }
     } catch {
       // Local session fallback
+      // Demo placeholder identity — never a real person's name
       setCustomerAuth({
         id: `cust_${cleanDigits}`,
         phone: formattedE164,
-        name: "Vikram Malhotra",
+        name: "Demo Member",
         role: "customer",
       });
       router.push("/account");
@@ -220,7 +225,7 @@ export default function CustomerLoginPage() {
           {/* TODO: Replace with the gym's real photos. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/placeholder-gym.jpg"
+            src="/images/placeholder-gym.svg"
             alt="Gym training area"
             className="w-full h-full object-cover grayscale opacity-30"
           />

@@ -376,9 +376,6 @@ export default function AdminDashboardPage() {
             <h2 className="font-title-md text-title-md uppercase font-bold text-primary">
               Live Order Queue &amp; Fulfillment Triage
             </h2>
-            <p className="font-body-sm text-body-sm text-on-surface-variant">
-              Synchronized with Razorpay webhooks and Blue Dart automated manifests
-            </p>
           </div>
           <Link
             href="/admin/orders"

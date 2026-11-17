@@ -16,7 +16,7 @@ export const ORDERS: Order[] = [
         size: "1 Pack",
         price: 0,
         quantity: 1,
-        image: "/images/placeholder-gym.jpg",
+        image: "/images/placeholder-gym.svg",
       },
     ],
     subtotal: 0,
@@ -29,7 +29,7 @@ export const ORDERS: Order[] = [
     shippingAddress: {
       id: "addr-001",
       fullName: "[PLACEHOLDER — ask the gym] Demo Customer",
-      phone: "+91 87987 03787",
+      phone: "",
       email: "demo@example.com",
       addressLine1: "NH08 near Tripura Gramin Bank",
       city: "Charilam",

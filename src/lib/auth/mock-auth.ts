@@ -48,11 +48,12 @@ export function getCustomerAuth(): CustomerAuthSession | null {
 }
 
 export function setCustomerAuth(session?: Partial<CustomerAuthSession>): CustomerAuthSession {
+  // Demo placeholder identity — never a real person's name
   const fullSession: CustomerAuthSession = {
-    id: session?.id || "cust_vikram_malhotra",
-    name: session?.name || "Vikram Malhotra",
-    email: session?.email || "vikram@example.com",
-    phone: session?.phone || "+91 98765 43210",
+    id: session?.id || "cust_demo_member",
+    name: session?.name || "Demo Member",
+    email: session?.email || "",
+    phone: session?.phone || "",
     role: "customer",
     signedInAt: Date.now(),
   };

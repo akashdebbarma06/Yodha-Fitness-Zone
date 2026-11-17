@@ -219,7 +219,7 @@ export default function CustomerRegisterPage() {
           {/* TODO: Replace with the gym's real photos. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/placeholder-gym.jpg"
+            src="/images/placeholder-gym.svg"
             alt="Gym training area"
             className="w-full h-full object-cover grayscale opacity-30"
           />

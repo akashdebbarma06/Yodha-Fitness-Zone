@@ -1,7 +1,7 @@
 import type { Product, ProductCategory } from "@/types";
 
 // TODO: Replace with the gym's real photos.
-const PLACEHOLDER_IMG = "/images/placeholder-gym.jpg";
+const PLACEHOLDER_IMG = "/images/placeholder-gym.svg";
 
 export const PRODUCTS: Product[] = [
   {
@@ -41,7 +41,7 @@ export const PRODUCTS: Product[] = [
     fssaiLic: "",
     rating: 0,
     reviewCount: 0,
-    status: "active",
+    status: "draft",
     createdAt: "2026-11-14",
   },
   {
@@ -81,7 +81,7 @@ export const PRODUCTS: Product[] = [
     fssaiLic: "",
     rating: 0,
     reviewCount: 0,
-    status: "active",
+    status: "draft",
     createdAt: "2026-11-14",
   },
 ];

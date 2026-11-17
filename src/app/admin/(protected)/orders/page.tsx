@@ -31,10 +31,10 @@ export default function AdminOrdersPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/60 pb-6">
         <div>
           <h1 className="font-headline-md text-headline-md font-semibold uppercase tracking-tight text-primary">
-            Orders Triage &amp; Fulfillment Deck
+            Orders
           </h1>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-            Real-time webhook ingestion from Razorpay, automated thermal 4x6 label generation, and Blue Dart carrier assignment.
+            Manage customer orders.
           </p>
         </div>
 
@@ -119,7 +119,7 @@ export default function AdminOrdersPage() {
 
                 <td className="p-4 font-mono text-xs">
                   <span className="text-primary font-semibold block">
-                    {order.courier || "Blue Dart"}
+                    {order.courier || "Courier"}
                   </span>
                   <span className="text-secondary block">
                     AWB: {order.awb || "Pending"}

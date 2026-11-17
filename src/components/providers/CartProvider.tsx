@@ -121,10 +121,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return calculateDiscount(appliedCoupon, subtotal);
   }, [appliedCoupon, subtotal]);
 
-  const freeShippingThreshold = STORE_SETTINGS.freeShippingThreshold || 1499;
-  const shipping = subtotal >= freeShippingThreshold || subtotal === 0 ? 0 : 99;
-  const freeShippingProgress = Math.min((subtotal / freeShippingThreshold) * 100, 100);
-  const amountToFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
+  // [PLACEHOLDER — ask the gym] Confirm free-shipping threshold before enabling.
+  const freeShippingThreshold = STORE_SETTINGS.freeShippingThreshold || 0;
+  const shipping = 0;
+  const freeShippingProgress = freeShippingThreshold > 0 ? Math.min((subtotal / freeShippingThreshold) * 100, 100) : 0;
+  const amountToFreeShipping = freeShippingThreshold > 0 ? Math.max(0, freeShippingThreshold - subtotal) : 0;
 
   const total = Math.max(0, subtotal - discount + shipping);
 

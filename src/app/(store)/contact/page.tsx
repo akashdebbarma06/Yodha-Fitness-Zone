@@ -96,7 +96,7 @@ export default function ContactPage() {
                       required
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      placeholder="Vikram Malhotra"
+                      placeholder="Your Name"
                       className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary"
                     />
                   </div>
@@ -109,7 +109,7 @@ export default function ContactPage() {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="vikram@example.com"
+                      placeholder="you@example.com"
                       className="w-full h-11 px-3 bg-surface border border-outline-variant text-body-sm font-body-sm focus:outline-none focus:border-primary"
                     />
                   </div>
@@ -205,7 +205,7 @@ export default function ContactPage() {
                 ONLINE STORE &amp; SHIPPING
               </span>
               <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                We deliver sports supplements, gym accessories, and fitness merchandise pan-India. Orders are dispatched from our Charilam hub with live tracking.
+                We deliver sports supplements, gym accessories, and fitness merchandise pan-India. Orders are shipped from Charilam, Tripura.
               </p>
               <div className="pt-2 text-xs font-mono space-y-1 text-on-surface">
                 <div>SUPPORT EMAIL: {STORE_SETTINGS.supportEmail}</div>

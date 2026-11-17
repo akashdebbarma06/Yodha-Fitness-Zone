@@ -66,10 +66,11 @@ export async function getCurrentUser(): Promise<AuthenticatedUser | null> {
       try {
         const parsed = JSON.parse(decodeURIComponent(customerCookie));
         if (parsed?.id && parsed?.role === "customer") {
+          // Demo placeholder identity — never a real person's name
           return {
             id: parsed.id,
-            phone: parsed.phone || "+91 98765 43210",
-            fullName: parsed.name || "Vikram Malhotra",
+            phone: parsed.phone || "",
+            fullName: parsed.name || "Demo Member",
             email: parsed.email || undefined,
             role: "customer",
             createdAt: new Date().toISOString(),
