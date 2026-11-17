@@ -39,7 +39,7 @@ export default function TermsOfServicePage() {
             Phone: +91 87987 03787
           </div>
           <p>
-            By accessing our website, browsing our product catalog, purchasing supplements, or enrolling in membership programs, you agree to be bound by these Terms of Service and our associated store policies.
+            By accessing our website, browsing our product catalog, or purchasing supplements, you agree to be bound by these Terms of Service and our associated store policies.
           </p>
         </section>
 
@@ -61,10 +61,10 @@ export default function TermsOfServicePage() {
           </ul>
         </section>
 
-        {/* Section 3: Gym Facility & Membership Terms */}
+        {/* Section 3: Gym Facility & In-Person Services */}
         <section className="space-y-3">
           <h2 className="font-title-md text-title-md uppercase font-bold text-primary">
-            3. Gym Memberships &amp; In-Person Services
+            3. Gym Facility &amp; In-Person Services
           </h2>
           <p>
             Yodha Fitness Zone offers in-facility training disciplines including weight training, cardio, transformation programs, diet guidance, and personal training:
@@ -74,13 +74,7 @@ export default function TermsOfServicePage() {
               <strong>Operating Hours:</strong> Facility access is available Friday through Wednesday from 5:30 AM to 10:30 PM. The gym is <strong>closed on Thursdays</strong> for maintenance.
             </li>
             <li>
-              <strong>Membership Activation:</strong> Memberships purchased online or at the counter activate on [PLACEHOLDER — ask the gym: activation policy, e.g. chosen start date or on first gym check-in].
-            </li>
-            <li>
-              <strong>Transferability &amp; Freezing:</strong> Terms governing membership holds, freezing, or transfers: [PLACEHOLDER — ask the gym: membership freezing and transfer rules].
-            </li>
-            <li>
-              <strong>Facility Safety:</strong> Members agree to follow gym etiquette, re-rack weights, maintain personal hygiene, and use gym equipment safely.
+              <strong>Facility Safety:</strong> Visitors and trainees agree to follow gym etiquette, re-rack weights, maintain personal hygiene, and use gym equipment safely.
             </li>
           </ul>
         </section>

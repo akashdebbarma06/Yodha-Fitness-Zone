@@ -17,7 +17,6 @@ const TRAINING_LINKS = [
 ];
 
 const CUSTOMER_LINKS = [
-  { label: "Gym Memberships", href: "/memberships" },
   { label: "Shipping Policy", href: "/policies/shipping" },
   { label: "Quality & Testing", href: "/about" },
   { label: "Track Your Order", href: "/track" },

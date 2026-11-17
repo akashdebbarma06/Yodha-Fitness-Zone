@@ -43,7 +43,7 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
-            Reach out for order support, product questions, gym tours, or wholesale enquiries. We respond within 4 business hours.
+            Reach out for order support, product questions, or wholesale enquiries. We respond within 4 business hours.
           </p>
         </div>
 
@@ -139,8 +139,7 @@ export default function ContactPage() {
                     >
                       <option value="order">Order Support</option>
                       <option value="product">Product Information</option>
-                      <option value="membership">Membership Enquiry</option>
-                      <option value="coaching">Personal Training</option>
+                      <option value="shipping">Shipping &amp; Delivery</option>
                       <option value="wholesale">Wholesale Enquiry</option>
                     </select>
                   </div>

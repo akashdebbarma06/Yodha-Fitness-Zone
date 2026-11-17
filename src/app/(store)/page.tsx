@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { PRODUCTS } from "@/lib/data/products";
-import { MEMBERSHIP_PLANS } from "@/lib/data/memberships";
 import { formatINR } from "@/lib/utils";
 import { ProductCard } from "@/components/store/ProductCard";
 
@@ -396,72 +395,7 @@ export default function FlagshipHomepage() {
       </section>
 
       {/* ──────────────────────────────────────────────
-          5. MEMBERSHIP PLANS SECTION
-          ────────────────────────────────────────────── */}
-      <section className="w-full bg-surface-container-high/40 py-16 lg:py-24 px-gutter border-b border-outline-variant/40">
-        <div className="max-w-[1360px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-space-md">
-            <div>
-              <span className="font-label-md text-label-md uppercase tracking-[0.14em] text-secondary font-semibold">
-                MEMBERSHIP PLANS
-              </span>
-              <h2 className="font-headline-lg text-headline-lg text-primary uppercase font-semibold tracking-tight mt-1">
-                Train at Yodha
-              </h2>
-            </div>
-            <Link
-              href="/memberships"
-              className="inline-flex items-center gap-1.5 font-label-md text-label-md uppercase tracking-wider font-semibold text-primary hover:text-secondary transition-colors"
-            >
-              <span>View All Plans &amp; Details</span>
-              <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </Link>
-          </div>
-
-          {MEMBERSHIP_PLANS.filter((p) => p.active).length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {MEMBERSHIP_PLANS.filter((p) => p.active).slice(0, 3).map((plan) => (
-                <div key={plan.id} className="bg-surface-container-lowest p-6 flex flex-col justify-between border border-outline-variant/40">
-                  <div>
-                    <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
-                      {plan.duration.replace("_", " ")}
-                    </span>
-                    <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary mt-1 mb-3">
-                      {plan.name}
-                    </h3>
-                    <div className="mb-4">
-                      <span className="font-mono text-2xl font-bold text-primary">{formatINR(plan.price)}</span>
-                    </div>
-                    <p className="text-xs text-on-surface-variant leading-relaxed">
-                      {plan.tagline}
-                    </p>
-                  </div>
-                  <div className="pt-6 mt-6 border-t border-outline-variant/40">
-                    <Link
-                      href="/memberships"
-                      className="w-full h-11 bg-surface-container-low hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md uppercase tracking-wider font-semibold flex items-center justify-center transition-colors"
-                    >
-                      View Details
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="p-12 text-center bg-surface-container-lowest border border-outline-variant space-y-3">
-              <h3 className="font-headline-sm text-headline-sm uppercase font-semibold text-primary">
-                Membership Plans Updating
-              </h3>
-              <p className="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">
-                Membership tiers and admission fees are being updated. Call +91 87987 03787 or visit our Charilam gym facility for latest enrollment rates.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────────
-          6. REVIEWS / GOOGLE RATING SECTION
+          5. REVIEWS / GOOGLE RATING SECTION
           ────────────────────────────────────────────── */}
       <section className="w-full bg-surface py-12 px-gutter border-b border-outline-variant/40">
         <div className="max-w-[1360px] mx-auto text-center">
@@ -472,7 +406,7 @@ export default function FlagshipHomepage() {
       </section>
 
       {/* ──────────────────────────────────────────────
-          7. NEWSLETTER SUBSCRIPTION
+          6. NEWSLETTER SUBSCRIPTION
           ────────────────────────────────────────────── */}
       <section className="w-full bg-surface-container-high py-16 lg:py-20 px-gutter">
         <div className="max-w-[1360px] mx-auto text-center max-w-xl">

@@ -89,23 +89,10 @@ export default function ReturnsPolicyPage() {
           </p>
         </section>
 
-        {/* Section 5: Gym Memberships & Personal Training */}
-        <section className="space-y-3">
-          <h2 className="font-title-md text-title-md uppercase font-bold text-primary">
-            5. Gym Memberships &amp; In-Person Training Plans
-          </h2>
-          <p>
-            Gym memberships, weight training access passes, cardio programs, and personal training enrollments at Yodha Fitness Zone are service-based commitments.
-          </p>
-          <p>
-            Refund, transfer, and cancellation terms for active gym memberships: [PLACEHOLDER — ask the gym: confirm membership cancellation and refund policy, e.g. whether memberships are strictly non-refundable or transferable under certain medical conditions].
-          </p>
-        </section>
-
-        {/* Section 6: Support Contact */}
+        {/* Section 5: Support Contact */}
         <section className="space-y-3 border-t border-outline-variant/60 pt-6">
           <h2 className="font-title-md text-title-md uppercase font-bold text-primary">
-            6. How to Request Assistance
+            5. How to Request Assistance
           </h2>
           <p>
             To initiate a return, report transit damage, or inquire about a refund, please reach out to us:

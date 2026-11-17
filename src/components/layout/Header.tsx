@@ -8,7 +8,6 @@ import { useAuth } from "@/hooks/useAuth";
 const NAV_LINKS = [
   { label: "Home", path: "/" },
   { label: "Shop", path: "/shop" },
-  { label: "Memberships", path: "/memberships" },
   { label: "About Gym", path: "/about" },
   { label: "Track Order", path: "/track" },
   { label: "Contact", path: "/contact" },
@@ -60,17 +59,6 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-space-sm sm:gap-space-md shrink-0">
-            {/* Search Link */}
-            <Link
-              href="/search"
-              className="hidden md:flex items-center gap-space-xs bg-surface-container-low border border-outline-variant px-space-sm py-1.5 text-on-surface-variant cursor-pointer hover:border-primary transition-colors"
-            >
-              <span className="material-symbols-outlined text-[18px]">search</span>
-              <span className="font-body text-body-sm text-outline pr-space-md select-none">
-                Search supplements...
-              </span>
-            </Link>
-
             {/* Currency Badge */}
             <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 bg-surface-container-low border border-outline-variant text-on-surface">
               <span className="font-body text-label-sm font-semibold tracking-wider">₹ INR</span>

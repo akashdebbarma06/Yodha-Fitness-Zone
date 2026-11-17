@@ -254,7 +254,7 @@ export default function CustomerRegisterPage() {
             WELCOME TO YODHA FITNESS ZONE
           </h2>
           <p className="font-body-sm text-body-sm text-surface-container-high leading-relaxed">
-            Create an account to shop, track orders, and manage your membership.
+            Create an account to shop and track orders.
           </p>
         </div>
 

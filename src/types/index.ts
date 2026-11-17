@@ -258,44 +258,5 @@ export interface CartItem {
   quantity: number;
 }
 
-/* ──────────────────────────────────────────────
-   Memberships
-   ────────────────────────────────────────────── */
 
-export type MembershipPlanDuration = "1_month" | "3_months" | "6_months" | "12_months";
-export type MembershipTier = "general" | "transformation" | "personal_training";
-export type MembershipStatus = "active" | "expiring_soon" | "expired" | "frozen";
-
-export interface MembershipPlan {
-  id: string;
-  name: string;
-  tagline: string;
-  duration: MembershipPlanDuration;
-  durationMonths: number;
-  price: number;
-  compareAtPrice?: number;
-  tier: MembershipTier;
-  features: string[];
-  isPopular?: boolean;
-  active: boolean;
-}
-
-export interface UserMembership {
-  id: string;
-  membershipNumber: string;
-  userId: string;
-  userName: string;
-  userPhone: string;
-  userEmail?: string;
-  planId: string;
-  planName: string;
-  startDate: string;
-  expiryDate: string;
-  status: MembershipStatus;
-  amountPaid: number;
-  paymentMethod: "online" | "cash" | "upi";
-  paymentStatus: "paid" | "pending";
-  source: "online" | "walk_in";
-  notes?: string;
-}
 

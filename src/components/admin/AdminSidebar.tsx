@@ -9,7 +9,6 @@ const ADMIN_NAV = [
   { label: "Products", path: "/admin/products", icon: "inventory_2" },
   { label: "Inventory", path: "/admin/inventory", icon: "warehouse" },
   { label: "Orders", path: "/admin/orders", icon: "receipt_long" },
-  { label: "Memberships", path: "/admin/memberships", icon: "card_membership" },
   { label: "Customers", path: "/admin/customers", icon: "group" },
   { label: "Coupons", path: "/admin/coupons", icon: "local_offer" },
   { label: "Shipments", path: "/admin/shipments", icon: "local_shipping" },

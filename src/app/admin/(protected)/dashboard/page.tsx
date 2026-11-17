@@ -48,7 +48,7 @@ export default function AdminDashboardPage() {
             </span>
           </div>
           <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
-            Manage products, orders, members and revenue.
+            Manage products, orders, and revenue.
           </p>
         </div>
 
@@ -89,14 +89,6 @@ export default function AdminDashboardPage() {
               Today
             </button>
           </div>
-
-          <Link
-            href="/admin/memberships"
-            className="h-9 px-4 bg-surface-container-low hover:bg-surface-container border border-outline-variant font-label-sm text-label-sm uppercase tracking-wider font-semibold text-primary flex items-center gap-1.5 transition-colors"
-          >
-            <span className="material-symbols-outlined text-[16px]">card_membership</span>
-            <span>Memberships</span>
-          </Link>
 
           <Link
             href="/admin/products/new"

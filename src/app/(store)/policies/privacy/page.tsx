@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
             1. Overview
           </h2>
           <p>
-            Yodha Fitness Zone (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) operates a unisex fitness facility and sports nutrition store based at NH08 near Tripura Gramin Bank, Charilam, Tripura 799103. This Privacy Policy details how we collect, handle, and protect your personal information when you use our website, purchase supplements, or enroll in our fitness memberships.
+            Yodha Fitness Zone (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) operates a unisex fitness facility and sports nutrition store based at NH08 near Tripura Gramin Bank, Charilam, Tripura 799103. This Privacy Policy details how we collect, handle, and protect your personal information when you use our website or purchase supplements.
           </p>
         </section>
 
@@ -49,9 +49,6 @@ export default function PrivacyPolicyPage() {
             <li>
               <strong>Delivery Information:</strong> Shipping address, delivery city, state, and postal pincode required to dispatch your orders.
             </li>
-            <li>
-              <strong>Membership Profile Details:</strong> Basic workout preferences, emergency contact details, and chosen training disciplines (weight training, cardio, transformation programs, diet guidance, or personal training) when you register for facility access.
-            </li>
           </ul>
         </section>
 
@@ -66,7 +63,6 @@ export default function PrivacyPolicyPage() {
           <ul className="list-disc pl-6 space-y-1.5">
             <li>Processing orders, generating shipping labels, and completing parcel deliveries.</li>
             <li>Sending essential service notifications such as order confirmations, tracking numbers, and account OTPs.</li>
-            <li>Managing gym access, verifying active membership tiers, and scheduling personal training sessions.</li>
             <li>Responding to customer support questions and handling returns or exchanges.</li>
             <li>Complying with statutory accounting and tax regulations in India.</li>
           </ul>

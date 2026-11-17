@@ -262,7 +262,7 @@ export default function CustomerLoginPage() {
             MEMBER ACCOUNT
           </h2>
           <p className="font-body-sm text-body-sm text-surface-container-high leading-relaxed">
-            Sign in to see your orders, track deliveries, and manage your membership.
+            Sign in to see your orders and track deliveries.
           </p>
         </div>
 

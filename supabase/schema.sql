@@ -1,7 +1,7 @@
 -- ==============================================================================
 -- Yodha Fitness Zone — Supabase PostgreSQL Schema
 -- Database: PostgreSQL 15+ (Supabase)
--- Scope: E-Commerce Storefront + Gym Memberships + Admin Operations
+-- Scope: E-Commerce Storefront + Admin Operations
 -- ==============================================================================
 
 -- 1. EXTENSIONS
@@ -22,9 +22,6 @@ create type order_status as enum (
 );
 create type payment_status as enum ('paid', 'pending', 'failed', 'refunded');
 create type payment_method as enum ('upi', 'cards', 'netbanking', 'cod');
-create type membership_status as enum ('active', 'expiring_soon', 'expired', 'frozen');
-create type membership_tier as enum ('general', 'transformation', 'personal_training');
-create type registration_source as enum ('online', 'walk_in');
 
 -- 3. PROFILES TABLE (Extends Supabase auth.users)
 create table if not exists public.profiles (
@@ -54,44 +51,7 @@ create table if not exists public.addresses (
   created_at timestamptz not null default now()
 );
 
--- 5. MEMBERSHIP PLANS TABLE
-create table if not exists public.membership_plans (
-  id text primary key,
-  name text not null,
-  tagline text,
-  duration_months integer not null default 1,
-  price integer not null,
-  compare_at_price integer,
-  tier membership_tier not null default 'general',
-  features jsonb not null default '[]'::jsonb,
-  is_popular boolean default false,
-  active boolean default true,
-  created_at timestamptz not null default now()
-);
-
--- 6. USER MEMBERSHIPS TABLE
-create table if not exists public.user_memberships (
-  id uuid primary key default uuid_generate_v4(),
-  membership_number text unique not null,
-  user_id uuid references public.profiles(id) on delete set null,
-  user_name text not null,
-  user_phone text not null,
-  user_email text,
-  plan_id text not null references public.membership_plans(id),
-  plan_name text not null,
-  start_date date not null default current_date,
-  expiry_date date not null,
-  status membership_status not null default 'active',
-  amount_paid integer not null,
-  payment_method payment_method not null default 'upi',
-  payment_status payment_status not null default 'paid',
-  source registration_source not null default 'online',
-  notes text,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
--- 7. PRODUCTS TABLE
+-- 5. PRODUCTS TABLE
 create table if not exists public.products (
   id uuid primary key default uuid_generate_v4(),
   slug text unique not null,
@@ -113,7 +73,7 @@ create table if not exists public.products (
   updated_at timestamptz not null default now()
 );
 
--- 8. PRODUCT VARIANTS TABLE
+-- 6. PRODUCT VARIANTS TABLE
 create table if not exists public.product_variants (
   id uuid primary key default uuid_generate_v4(),
   product_id uuid not null references public.products(id) on delete cascade,
@@ -130,7 +90,7 @@ create table if not exists public.product_variants (
   created_at timestamptz not null default now()
 );
 
--- 9. ORDERS TABLE
+-- 7. ORDERS TABLE
 create table if not exists public.orders (
   id uuid primary key default uuid_generate_v4(),
   order_number text unique not null, -- e.g. #YFZ-98421
@@ -159,26 +119,21 @@ create table if not exists public.orders (
   updated_at timestamptz not null default now()
 );
 
--- 10. ROW LEVEL SECURITY (RLS) POLICIES
+-- 8. ROW LEVEL SECURITY (RLS) POLICIES
 alter table public.profiles enable row level security;
 alter table public.addresses enable row level security;
-alter table public.membership_plans enable row level security;
-alter table public.user_memberships enable row level security;
 alter table public.products enable row level security;
 alter table public.product_variants enable row level security;
 alter table public.orders enable row level security;
 
--- Public read for active products and plans
+-- Public read for active products and variants
 create policy "Allow public read active products"
   on public.products for select using (status = 'active');
 
 create policy "Allow public read variants"
   on public.product_variants for select using (true);
 
-create policy "Allow public read membership plans"
-  on public.membership_plans for select using (active = true);
-
--- Customer access to their own profile, addresses, memberships, orders
+-- Customer access to their own profile, addresses, orders
 create policy "Users can read own profile"
   on public.profiles for select using (auth.uid() = id);
 
@@ -187,9 +142,6 @@ create policy "Users can update own profile"
 
 create policy "Users can manage own addresses"
   on public.addresses for all using (auth.uid() = user_id);
-
-create policy "Users can read own memberships"
-  on public.user_memberships for select using (auth.uid() = user_id);
 
 create policy "Users can read own orders"
   on public.orders for select using (auth.uid() = user_id);
@@ -202,11 +154,6 @@ create policy "Staff full access profiles"
 
 create policy "Staff full access products"
   on public.products for all using (
-    exists (select 1 from public.profiles where id = auth.uid() and role in ('staff', 'admin'))
-  );
-
-create policy "Staff full access memberships"
-  on public.user_memberships for all using (
     exists (select 1 from public.profiles where id = auth.uid() and role in ('staff', 'admin'))
   );
 
