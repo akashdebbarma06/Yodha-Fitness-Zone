@@ -168,9 +168,9 @@ export default function CheckoutPage() {
 
             <div className="flex items-center gap-2 text-secondary text-xs uppercase tracking-wider font-bold">
               <span className="material-symbols-outlined text-[16px]">
-                verified_user
+                lock
               </span>
-              <span>RBI Tokenized &amp; 256-Bit SSL Encrypted</span>
+              <span>Secure Checkout</span>
             </div>
           </div>
         </section>
@@ -448,7 +448,7 @@ export default function CheckoutPage() {
                       className="w-4 h-4 accent-primary"
                     />
                     <span className="font-title-md text-title-md font-semibold text-primary">
-                      Cards (RuPay / Visa / Mastercard)
+                      Cards (Debit / Credit Cards)
                     </span>
                   </div>
                   <span className="text-xs text-outline font-mono">
@@ -602,19 +602,12 @@ export default function CheckoutPage() {
               )}
             </button>
 
-            <div className="pt-2 flex items-center justify-center gap-4 text-[10px] text-outline uppercase tracking-wider font-semibold">
-              <span className="flex items-center gap-1">
-                <span className="material-symbols-outlined text-[13px]">
-                  security
-                </span>
-                PCI-DSS Aligned
-              </span>
-              <span>•</span>
+            <div className="pt-2 flex items-center justify-center text-[10px] text-outline uppercase tracking-wider font-semibold">
               <span className="flex items-center gap-1">
                 <span className="material-symbols-outlined text-[13px]">
                   lock
                 </span>
-                256-Bit SSL Encrypted
+                Secure Checkout
               </span>
             </div>
           </div>

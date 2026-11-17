@@ -370,25 +370,6 @@ export default function CartPage() {
                   Continue Shopping
                 </Link>
               </div>
-
-              {/* Payment badges */}
-              <div className="pt-3 border-t border-outline-variant text-center space-y-2">
-                <span className="text-[10px] uppercase tracking-widest text-outline font-semibold block">
-                  Payment Methods
-                </span>
-                <div className="flex flex-wrap items-center justify-center gap-1.5">
-                  {["UPI", "RAZORPAY", "RUPAY", "VISA", "MASTERCARD", "NETBANKING"].map(
-                    (b) => (
-                      <span
-                        key={b}
-                        className="px-2 py-0.5 bg-surface text-[10px] font-semibold border border-outline-variant text-on-surface-variant"
-                      >
-                        {b}
-                      </span>
-                    )
-                  )}
-                </div>
-              </div>
             </div>
           </div>
         )}

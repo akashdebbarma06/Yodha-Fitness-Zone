@@ -73,12 +73,6 @@ export default function FlagshipHomepage() {
               >
                 SHOP SUPPLEMENTS
               </Link>
-              <Link
-                href="/about"
-                className="h-12 px-8 bg-surface-container-lowest hover:bg-primary hover:text-on-primary text-primary font-label-md text-label-md uppercase tracking-widest font-semibold flex items-center justify-center transition-colors border border-outline-variant"
-              >
-                EXPLORE TRAINING CLUB
-              </Link>
             </div>
           </div>
 
@@ -277,7 +271,7 @@ export default function FlagshipHomepage() {
       </section>
 
       {/* ──────────────────────────────────────────────
-          4. GYM & TRAINING CLUB INTRODUCTION
+          4. GYM FACILITY & TRAINING INTRODUCTION
           ────────────────────────────────────────────── */}
       <section className="w-full bg-surface-container-low py-16 lg:py-24 px-gutter border-y border-outline-variant/40">
         <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
@@ -377,18 +371,6 @@ export default function FlagshipHomepage() {
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className="pt-4">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest font-semibold text-primary hover:text-secondary transition-colors"
-              >
-                <span>Learn More</span>
-                <span className="material-symbols-outlined text-[18px]">
-                  arrow_forward
-                </span>
-              </Link>
             </div>
           </div>
         </div>

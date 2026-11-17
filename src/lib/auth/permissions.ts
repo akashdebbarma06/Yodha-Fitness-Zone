@@ -35,8 +35,8 @@ export async function requireAdmin(): Promise<AdminUser> {
         if (parsed?.id && (parsed?.role === "admin" || parsed?.role === "owner")) {
           return {
             id: parsed.id,
-            name: parsed.name || "Arjun Sharma",
-            email: parsed.email || "arjun@yodhafitnesszone.com",
+            name: parsed.name || "Admin Staff",
+            email: parsed.email || "admin@example.com",
             role: parsed.role,
           };
         }

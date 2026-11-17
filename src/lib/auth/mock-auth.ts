@@ -94,9 +94,9 @@ export function getAdminAuth(): AdminAuthSession | null {
 
 export function setAdminAuth(session?: Partial<AdminAuthSession>): AdminAuthSession {
   const fullSession: AdminAuthSession = {
-    id: session?.id || "admin_arjun_sharma",
-    name: session?.name || "Arjun Sharma",
-    email: session?.email || "arjun@yodhafitnesszone.com",
+    id: session?.id || "admin_demo",
+    name: session?.name || "Admin Staff",
+    email: session?.email || "admin@example.com",
     role: "owner",
     signedInAt: Date.now(),
   };

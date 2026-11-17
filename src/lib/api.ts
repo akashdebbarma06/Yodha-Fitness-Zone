@@ -138,7 +138,7 @@ export async function lookupPinCode(pin: string): Promise<{ city: string; state:
 export async function signIn(_email: string, _password: string): Promise<{ success: boolean; user?: { name: string; email: string } }> {
   await delay(300);
   // TODO: Replace with real Firebase/Supabase auth in Phase 3
-  return { success: true, user: { name: "Arjun Sharma", email: _email } };
+  return { success: true, user: { name: _email ? _email.split("@")[0] : "User", email: _email } };
 }
 
 export async function signUp(_name: string, _email: string, _password: string): Promise<{ success: boolean }> {

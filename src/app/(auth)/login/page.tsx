@@ -236,10 +236,12 @@ export default function CustomerLoginPage() {
         <div className="relative z-10 flex items-center justify-between">
           <Link
             href="/"
-            className="font-headline-sm text-headline-sm uppercase tracking-tight text-on-primary flex items-center gap-2"
+            className="flex flex-col"
           >
-            <span>YODHA</span>
-            <span className="text-secondary-fixed text-xs font-semibold px-1.5 py-0.5 bg-white/10 border border-white/20">
+            <span className="font-headline-sm text-headline-sm uppercase tracking-tight text-on-primary font-bold leading-none">
+              YODHA
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.22em] text-surface-container-high font-medium">
               FITNESS ZONE
             </span>
           </Link>
@@ -255,21 +257,12 @@ export default function CustomerLoginPage() {
 
         {/* Editorial Quote */}
         <div className="relative z-10 space-y-4 max-w-sm">
-          <span className="font-label-sm text-label-sm uppercase tracking-[0.2em] text-secondary-fixed font-bold">
-            SECURE ACCESS
-          </span>
           <h2 className="font-headline-lg text-headline-lg uppercase font-semibold leading-tight tracking-tight">
-            MEMBER ACCOUNT
+            YOUR ACCOUNT
           </h2>
           <p className="font-body-sm text-body-sm text-surface-container-high leading-relaxed">
             Sign in to see your orders and track deliveries.
           </p>
-        </div>
-
-        {/* Footer Notice */}
-        <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-outline uppercase tracking-wider">
-          <span>OTP ENCRYPTION • 256-BIT SSL</span>
-          <span>CHARILAM, TRIPURA</span>
         </div>
       </div>
 
@@ -278,8 +271,13 @@ export default function CustomerLoginPage() {
         <div className="w-full max-w-md space-y-8">
           {/* Mobile Back & Wordmark */}
           <div className="lg:hidden flex items-center justify-between mb-4">
-            <Link href="/" className="font-headline-sm uppercase text-primary font-bold">
-              YODHA
+            <Link href="/" className="flex flex-col">
+              <span className="font-headline-sm uppercase text-primary font-bold leading-none">
+                YODHA
+              </span>
+              <span className="text-[9px] uppercase tracking-[0.22em] text-on-surface-variant font-medium">
+                FITNESS ZONE
+              </span>
             </Link>
             <Link
               href="/"
@@ -292,18 +290,14 @@ export default function CustomerLoginPage() {
 
           {/* Header Typography */}
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-surface-container-low border border-outline-variant text-[11px] font-mono uppercase tracking-wider text-on-surface-variant">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-              Customer Mobile Authentication
-            </div>
             <h1 className="font-headline-lg text-headline-lg uppercase tracking-tight text-primary font-semibold">
               {step === "phone" ? "Sign In" : "Verify Mobile Number"}
             </h1>
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              {step === "phone"
-                ? "Enter your mobile number to receive a one-time verification passcode."
-                : `Enter the 6-digit verification code sent to ${formattedE164}.`}
-            </p>
+            {step === "otp" && (
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                Enter the 6-digit verification code sent to {formattedE164}.
+              </p>
+            )}
           </div>
 
           {/* Error Alert */}
@@ -342,7 +336,7 @@ export default function CustomerLoginPage() {
                     type="tel"
                     required
                     autoFocus
-                    placeholder="98765 43210"
+                    placeholder="Your 10-digit mobile number"
                     maxLength={10}
                     value={phone}
                     onChange={(e) => {

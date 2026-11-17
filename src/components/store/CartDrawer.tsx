@@ -338,17 +338,10 @@ export function CartDrawer() {
               </div>
 
               {/* Trust Badges */}
-              <div className="pt-2 flex items-center justify-center gap-4 text-[10px] text-outline uppercase tracking-wider font-semibold">
+              <div className="pt-2 flex items-center justify-center text-[10px] text-outline uppercase tracking-wider font-semibold">
                 <span className="flex items-center gap-1">
                   <span className="material-symbols-outlined text-[14px]">
                     lock
-                  </span>
-                  256-Bit SSL
-                </span>
-                <span>•</span>
-                <span className="flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]">
-                    verified
                   </span>
                   Secure Checkout
                 </span>

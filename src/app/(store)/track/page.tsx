@@ -10,13 +10,13 @@ function TrackContent() {
   const searchParams = useSearchParams();
   const initialId = searchParams.get("id") || "";
 
-  const [orderQuery, setOrderQuery] = useState(initialId || "#YFZ-98421");
-  const [phoneQuery, setPhoneQuery] = useState("+91 98765 43210");
+  const [orderQuery, setOrderQuery] = useState(initialId || "#YFZ-1001");
+  const [phoneQuery, setPhoneQuery] = useState("");
   const [searchedOrder, setSearchedOrder] = useState(() => {
     return (
       ORDERS.find(
         (o) =>
-          o.id.toLowerCase() === (initialId || "#yfz-98421").toLowerCase()
+          o.id.toLowerCase() === (initialId || "#yfz-1001").toLowerCase()
       ) || ORDERS[0]
     );
   });
@@ -84,7 +84,7 @@ function TrackContent() {
               type="tel"
               value={phoneQuery}
               onChange={(e) => setPhoneQuery(e.target.value)}
-              placeholder="+91 98765 43210"
+              placeholder="Your mobile number"
               required
               className="w-full h-11 px-3 bg-surface border border-outline-variant font-mono text-sm focus:outline-none focus:border-primary"
             />

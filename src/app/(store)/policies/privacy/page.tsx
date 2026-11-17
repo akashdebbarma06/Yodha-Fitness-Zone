@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
             4. Payment Security (Razorpay)
           </h2>
           <p>
-            We take your financial security with utmost seriousness. All online payments on our platform are processed securely via <strong>Razorpay</strong>, an RBI-authorized payment aggregator compliant with PCI-DSS Level 1 standards.
+            We take your financial security with utmost seriousness. All online payments on our platform are processed securely via <strong>Razorpay</strong>, an RBI-authorized payment aggregator.
           </p>
           <p>
             <strong>We do not capture, process, or store your credit/debit card numbers, CVVs, netbanking credentials, or UPI MPINs on our servers.</strong> All sensitive financial information is encrypted and transmitted directly to Razorpay during checkout.

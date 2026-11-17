@@ -229,10 +229,12 @@ export default function CustomerRegisterPage() {
         <div className="relative z-10 flex items-center justify-between">
           <Link
             href="/"
-            className="font-headline-sm text-headline-sm uppercase tracking-tight text-on-primary flex items-center gap-2"
+            className="flex flex-col"
           >
-            <span>YODHA</span>
-            <span className="text-secondary-fixed text-xs font-semibold px-1.5 py-0.5 bg-white/10 border border-white/20">
+            <span className="font-headline-sm text-headline-sm uppercase tracking-tight text-on-primary font-bold leading-none">
+              YODHA
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.22em] text-surface-container-high font-medium">
               FITNESS ZONE
             </span>
           </Link>
@@ -268,8 +270,13 @@ export default function CustomerRegisterPage() {
         <div className="w-full max-w-md space-y-8">
           {/* Mobile Back & Wordmark */}
           <div className="lg:hidden flex items-center justify-between mb-4">
-            <Link href="/" className="font-headline-sm uppercase text-primary font-bold">
-              YODHA
+            <Link href="/" className="flex flex-col">
+              <span className="font-headline-sm uppercase text-primary font-bold leading-none">
+                YODHA
+              </span>
+              <span className="text-[9px] uppercase tracking-[0.22em] text-on-surface-variant font-medium">
+                FITNESS ZONE
+              </span>
             </Link>
             <Link
               href="/"
@@ -345,7 +352,7 @@ export default function CustomerRegisterPage() {
                   <input
                     type="tel"
                     required
-                    placeholder="98765 43210"
+                    placeholder="Your 10-digit mobile number"
                     maxLength={10}
                     value={phone}
                     onChange={(e) => {

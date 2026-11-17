@@ -84,72 +84,16 @@ function ShopContent() {
 
   return (
     <div className="w-full flex flex-col">
-      {/* ── Breadcrumb & Trust Banner ── */}
+      {/* ── Breadcrumb ── */}
       <section className="w-full bg-surface-container-low border-b border-outline-variant/50">
-        <div className="max-w-[1360px] mx-auto px-gutter py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs text-[11px]">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-on-surface-variant font-label-sm uppercase tracking-widest">
+        <div className="max-w-[1360px] mx-auto px-gutter py-2.5">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-on-surface-variant font-label-sm uppercase tracking-widest text-[11px]">
             <Link href="/" className="hover:text-on-surface transition-colors">
               Home
             </Link>
             <span className="text-outline">/</span>
             <span className="text-on-surface font-semibold">Shop</span>
           </nav>
-          <div className="flex items-center gap-space-md text-on-surface-variant font-label-sm uppercase tracking-wider">
-            <span className="flex items-center gap-1.5 text-secondary font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-              Pan-India Shipping
-            </span>
-            <span className="text-outline hidden sm:inline">•</span>
-            <span className="hidden sm:inline">Dispatched from Charilam, Tripura</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Editorial Header ── */}
-      <section className="w-full bg-surface py-10 lg:py-14 px-gutter border-b border-outline-variant/40">
-        <div className="max-w-[1360px] mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
-          <div className="max-w-3xl flex flex-col gap-2">
-            <span className="font-label-sm text-label-sm uppercase tracking-[0.14em] text-secondary font-semibold">
-              STORE
-            </span>
-            <h1 className="font-headline-lg text-headline-lg uppercase text-primary tracking-tight font-semibold">
-              Products
-            </h1>
-            <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
-              Supplements and fitness essentials available from Yodha Fitness Zone.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-space-lg bg-surface-container-low px-space-md py-space-sm rounded-lg self-start lg:self-auto border border-outline-variant/40">
-            <div className="flex flex-col">
-              <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
-                Catalog
-              </span>
-              <span className="font-metric-num text-metric-num text-on-surface font-bold">
-                {activeProductsList.length} Listed
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Category Pill Bar ── */}
-        <div className="max-w-[1360px] mx-auto pt-8 flex items-center justify-between gap-space-md overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-2 shrink-0">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat.value}
-                onClick={() => setSelectedCategory(cat.value)}
-                type="button"
-                className={`font-label-md text-label-md uppercase tracking-wider px-4 py-2 transition-all ${
-                  selectedCategory === cat.value
-                    ? "bg-primary text-on-primary font-semibold"
-                    : "bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface border border-outline-variant/40"
-                }`}
-              >
-                {cat.label} ({cat.count})
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 

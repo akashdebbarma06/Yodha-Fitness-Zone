@@ -8,7 +8,6 @@ import { useAuth } from "@/hooks/useAuth";
 const NAV_LINKS = [
   { label: "Home", path: "/" },
   { label: "Shop", path: "/shop" },
-  { label: "About Gym", path: "/about" },
   { label: "Track Order", path: "/track" },
   { label: "Contact", path: "/contact" },
 ];
@@ -38,7 +37,7 @@ export function Header() {
               <span className="font-heading text-headline-sm uppercase tracking-tight text-on-surface font-semibold leading-none">
                 YODHA
               </span>
-              <span className="text-[9px] font-label-sm uppercase tracking-[0.22em] text-secondary font-bold">
+              <span className="text-[9px] font-label-sm uppercase tracking-[0.22em] text-on-surface-variant font-medium">
                 FITNESS ZONE
               </span>
             </Link>
@@ -59,11 +58,6 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-space-sm sm:gap-space-md shrink-0">
-            {/* Currency Badge */}
-            <div className="hidden sm:flex items-center gap-1 px-2.5 py-1 bg-surface-container-low border border-outline-variant text-on-surface">
-              <span className="font-body text-label-sm font-semibold tracking-wider">₹ INR</span>
-            </div>
-
             {/* Account: /account if authenticated, /login if unauthenticated */}
             <Link
               href={isAuthenticated ? "/account" : "/login"}
@@ -118,15 +112,6 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-
-            <Link
-              href="/track"
-              onClick={() => setMobileMenuOpen(false)}
-              className="font-body text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface py-2 transition-colors border-b border-hairline flex items-center justify-between"
-            >
-              <span>Track Order</span>
-              <span className="material-symbols-outlined text-[18px]">local_shipping</span>
-            </Link>
 
             <Link
               href={isAuthenticated ? "/account" : "/login"}
